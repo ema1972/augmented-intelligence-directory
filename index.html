@@ -6,78 +6,104 @@
     <title>Augmented Intelligence - AI Directory</title>
     <meta name="description" content="Complete directory with direct links to LLMs, Agent Frameworks, and AI App Generators for developers and AI enthusiasts">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- 1. Impostazioni Globali e Variabili --- */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color-orange: #f59e0b;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #F8F9FA;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #3b82f6;
-            --text-color: #1f2937;
-            --text-light: #6b7280;
-            --bg-color: #ffffff;
-            --card-bg: #f8fafc;
-            --border-color: #e5e7eb;
-            --hover-color: #eff6ff;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            background-color: var(--bg-light); /* SFONDO CHIARO E NEUTRO */
             min-height: 100vh;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 2rem 1.5rem;
         }
 
+        /* --- 2. Header e Tipografia --- */
         .header {
             text-align: center;
-            margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
+            margin-bottom: 2.5rem; /* Spazio ridotto */
+            background: var(--bg-white);
+            padding: 1.5rem; /* Padding ridotto */
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04); /* OMBRA MORBIDA */
         }
 
-        .header h1 {
+        .header .main-title { /* H1 - Titolo principale */
             font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            color: var(--text-color);
             font-weight: 700;
+            margin: 0.5rem 0;
+        }
+        
+        .header .subtitle { /* H2 - Sottotitolo */
+             font-size: 1.25rem;
+             font-weight: 500;
+             color: var(--primary-color);
+             margin-bottom: 0.5rem;
         }
 
-        .header p {
+        .header .author-link {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .header .author-link a {
+             color: var(--primary-color);
+             text-decoration: none;
+             font-weight: 500;
+        }
+        .header .author-link a:hover {
+            text-decoration: underline;
+        }
+
+        .header .description {
             font-size: 1.1rem;
             color: var(--text-light);
             max-width: 600px;
             margin: 0 auto;
         }
 
+        /* --- 3. Banner del Libro (Ridisegnato) --- */
         .book-banner {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            margin: 2rem auto;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            margin: 2.5rem auto;
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 2rem;
             max-width: 800px;
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
-        }
-
-        .book-content {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
             display: flex;
             align-items: center;
-            justify-content: space-between;
             gap: 2rem;
         }
 
@@ -86,177 +112,120 @@
         }
 
         .book-image {
-            width: 240px;
-            height: 300px;
+            width: 150px; /* Dimensioni leggermente aumentate */
+            height: 188px;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, #1e3a8a, #000000);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         .book-cover-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.3s ease;
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;
         }
-
-        .book-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, #000000, #1e3a8a);
-        }
-
-        .book-placeholder small {
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.2;
-        }
-
-        .book-visual:hover .book-cover-img {
-            transform: scale(1.05);
-        }
-
-        .book-info {
-            flex-grow: 1;
-        }
-
+        .book-visual:hover .book-cover-img { transform: scale(1.05); }
+        
         .book-info h3 {
-            color: white;
+            color: var(--text-color);
             margin: 0 0 0.5rem 0;
             font-size: 1.3rem;
             font-weight: 600;
         }
 
         .book-info p {
-            color: rgba(255, 255, 255, 0.9);
-            margin: 0;
-            font-size: 0.95rem;
+            color: var(--text-light);
+            margin: 0 0 1.5rem 0;
+            font-size: 1rem;
         }
 
-        .book-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            flex-shrink: 0;
-            align-items: stretch;
-            min-width: 200px;
-        }
-
-        .link-group {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 0.5rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(5px);
-        }
-
-        .flag {
-            font-size: 1.5rem;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
+        .book-links { display: flex; gap: 0.75rem; }
+        .flag { font-size: 1rem; margin-right: 0.5rem; }
 
         .book-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.8rem 1.5rem;
-            background: white;
-            color: var(--primary-color);
+            padding: 0.6rem 1.2rem;
+            background: var(--accent-color-orange);
+            color: var(--bg-white);
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            font-size: 0.95rem;
-            width: 100%;
+            font-size: 0.9rem;
         }
 
         .book-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+            background: #eA8900;
         }
-
-        .book-link.amazon:hover {
-            background: #ff9900;
-            color: white;
-        }
-
-        .book-link.apple:hover {
-            background: #000000;
-            color: white;
-        }
-
-        .search-container {
-            margin-bottom: 2rem;
+        
+        /* --- 4. Filtri e Griglia --- */
+        .category-filter {
             display: flex;
             justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
         }
 
-        .search-box {
-            width: 100%;
-            max-width: 500px;
-            padding: 1rem 1.5rem;
-            border: 2px solid var(--border-color);
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-white);
+            color: var(--text-color);
             border-radius: 50px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .search-box:focus {
-            outline: none;
+        .filter-btn:hover {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--bg-white);
+            border-color: var(--primary-color);
         }
 
         .llm-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem; /* Spazio aumentato */
             margin-bottom: 3rem;
         }
-
+        
+        /* --- 5. Card Design (Migliorato) --- */
         .llm-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-white);
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 2rem; /* Più spazio interno */
             transition: all 0.3s ease;
             border: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
         }
 
-        .llm-card::before {
+        .llm-card::before { /* BORDO SUPERIORE PULITO */
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            background: var(--primary-color);
         }
 
         .llm-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* OMBRA HOVER */
+            border-color: var(--primary-color);
         }
 
         .llm-header {
@@ -265,22 +234,22 @@
             margin-bottom: 1rem;
         }
 
-        .llm-icon {
-            width: 48px;
-            height: 48px;
+        .llm-icon { /* STILE ICONA UNIFICATO */
+            width: 48px; height: 48px;
             border-radius: 12px;
             margin-right: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: white;
+            font-weight: 700;
             font-size: 1.2rem;
+            background: #e0f2fe; /* Sfondo chiaro e pulito */
+            color: #0c4a6e;      /* Testo scuro per contrasto */
         }
 
         .llm-title {
             font-size: 1.4rem;
-            font-weight: 600;
+            font-weight: 600; /* Peso aumentato */
             color: var(--text-color);
             margin: 0;
         }
@@ -289,63 +258,43 @@
             font-size: 0.9rem;
             color: var(--text-light);
         }
-
+        
         .llm-description {
             color: var(--text-light);
-            margin-bottom: 1.5rem;
             line-height: 1.6;
-        }
-
-        .llm-features {
-            display: none;
+            flex-grow: 1; /* Fa in modo che la card si estenda */
+            margin-bottom: 1.5rem;
         }
 
         .llm-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             padding: 0.75rem 1.5rem;
             background: var(--primary-color);
-            color: white;
+            color: var(--bg-white);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            width: 100%;
-            justify-content: center;
+            transition: all 0.2s ease;
+            margin-top: auto; /* Allinea il bottone in fondo */
         }
-
+        
         .llm-link:hover {
             background: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 7px 14px rgba(37, 99, 235, 0.2);
         }
 
-        .llm-link:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-
-        .status-indicator {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--success-color);
-        }
-
-        .status-indicator.beta {
-            background: var(--warning-color);
-        }
-
+        /* --- 6. Footer e Utilità --- */
         .footer {
             text-align: center;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-white);
             border-radius: 16px;
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
             margin-top: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
         }
 
         .footer p {
@@ -353,108 +302,19 @@
             font-size: 0.9rem;
         }
 
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--border-color);
-            background: white;
-            color: var(--text-color);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
+        /* --- 7. Media Queries per Responsività --- */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .container {
-                padding: 1rem;
-            }
+            .container { padding: 1.5rem 1rem; }
+            .header .main-title { font-size: 2rem; }
+            .llm-grid { grid-template-columns: 1fr; }
 
-            .llm-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-filter {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .book-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .book-visual {
-                order: -1;
-            }
-
-            .book-image {
-                width: 180px;
-                height: 225px;
-                margin: 0 auto;
-            }
-
-            .book-links {
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-                width: 100%;
-            }
-
-            .link-group {
-                flex-direction: column;
-                gap: 0.5rem;
-                min-width: 150px;
-            }
+            .book-banner { flex-direction: column; text-align: center; gap: 1.5rem; }
+            .book-visual { order: -1; }
+            .book-image { margin: 0 auto; }
+            .book-info p { margin-bottom: 1rem; }
+            .book-links { justify-content: center; flex-direction: row; flex-wrap: wrap; }
         }
-
-        /* Focus indicators for accessibility */
-        .llm-card:focus-within {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-            :root {
-                --primary-color: #000080;
-                --text-color: #000000;
-                --bg-color: #ffffff;
-            }
-        }
-
-        /* Reduced motion support */
+        
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -467,52 +327,29 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Augmented Intelligence</h1>
-            <p style="margin: 0.5rem 0 1rem 0; font-size: 1rem; color: var(--text-light); font-style: italic; text-align: center;">
-                by <a href="https://www.linkedin.com/in/emanuelecastagno/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Emanuele Castagno (Linkedin)</a>
+            <h2 class="subtitle">Augmented Intelligence</h2>
+            <h1 class="main-title">AI Directory</h1>
+            <p class="author-link">
+                by <a href="https://www.linkedin.com/in/emanuelecastagno/" target="_blank" rel="noopener noreferrer">Emanuele Castagno</a>
             </p>
-            <h1 style="margin-top: 0.5rem; margin-bottom: 1rem; font-size: 2.5rem; color: var(--primary-color); font-weight: 700;">AI Directory</h1>
-            <p>LLMs, Agents, AI App Generator - Complete toolkit for AI-powered development and automation</p>
+            <p class="description">A complete toolkit with direct links to LLMs, Agents, and AI App Generators.</p>
         </header>
 
-        <!-- Book Promotion Banner -->
         <div class="book-banner">
-            <div class="book-content">
-                <div class="book-visual">
-                    <div class="book-image">
-                        <img src="https://i.postimg.cc/vmFCXD7g/Augmented-Intelligence-user-preview.png" 
-                             alt="Augmented Intelligence Book Cover" 
-                             class="book-cover-img"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="book-placeholder" style="display: none;">
-                            📚<br>
-                            <small>Augmented<br>Intelligence</small>
-                        </div>
-                    </div>
+            <div class="book-visual">
+                <div class="book-image">
+                    <img src="https://i.postimg.cc/vmFCXD7g/Augmented-Intelligence-user-preview.png" 
+                         alt="Augmented Intelligence Book Cover" 
+                         class="book-cover-img"
+                         onerror="this.style.display='none';">
                 </div>
-                <div class="book-info">
-                    <h3>📚 New Book: "Augmented Intelligence"</h3>
-                    <p>Discover the future of AI and how to enhance your cognitive abilities with artificial intelligence</p>
-                </div>
+            </div>
+            <div class="book-info">
+                <h3>📚 New Book: "Augmented Intelligence"</h3>
+                <p>Discover the future of AI and enhance your cognitive abilities.</p>
                 <div class="book-links">
-                    <div class="link-group">
-                        <span class="flag">🇬🇧</span>
-                        <a href="https://a.co/d/fMU5kJa" target="_blank" rel="noopener noreferrer" class="book-link amazon">
-                            Amazon EN
-                        </a>
-                        <a href="https://lnkd.in/dxRxSutn" target="_blank" rel="noopener noreferrer" class="book-link apple">
-                            Apple Books
-                        </a>
-                    </div>
-                    <div class="link-group">
-                        <span class="flag">🇮🇹</span>
-                        <a href="https://amzn.eu/d/9EVzfnH" target="_blank" rel="noopener noreferrer" class="book-link amazon">
-                            Amazon IT
-                        </a>
-                        <a href="https://lnkd.in/dpPEpKZX" target="_blank" rel="noopener noreferrer" class="book-link apple">
-                            Apple Books
-                        </a>
-                    </div>
+                    <a href="https://a.co/d/fMU5kJa" target="_blank" rel="noopener noreferrer" class="book-link"><span class="flag">🇬🇧</span> Amazon EN</a>
+                    <a href="https://amzn.eu/d/9EVzfnH" target="_blank" rel="noopener noreferrer" class="book-link"><span class="flag">🇮🇹</span> Amazon IT</a>
                 </div>
             </div>
         </div>
@@ -527,645 +364,48 @@
         </div>
 
         <main class="llm-grid" id="llmGrid">
-            <!-- LLMs Section -->
-            <!-- Claude -->
             <article class="llm-card" data-category="conversational">
-                <div class="status-indicator" aria-label="Active service"></div>
                 <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">C</div>
+                    <div class="llm-icon">C</div>
                     <div>
                         <h2 class="llm-title">Claude</h2>
                         <div class="llm-company">Anthropic</div>
                     </div>
                 </div>
-                <p class="llm-description">
-                    Advanced AI assistant for complex conversations, document and image analysis.
-                </p>
-                <a href="https://claude.ai" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Claude
-                </a>
+                <p class="llm-description">Advanced AI assistant for complex conversations, document and image analysis.</p>
+                <a href="https://claude.ai" class="llm-link" target="_blank" rel="noopener noreferrer">Access Claude</a>
             </article>
 
-            <!-- ChatGPT -->
             <article class="llm-card" data-category="conversational coding">
-                <div class="status-indicator" aria-label="Active service"></div>
                 <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #10ac84, #00d2d3);">GPT</div>
+                    <div class="llm-icon">GPT</div>
                     <div>
                         <h2 class="llm-title">ChatGPT</h2>
                         <div class="llm-company">OpenAI</div>
                     </div>
                 </div>
-                <p class="llm-description">
-                    The pioneer of AI chatbots, excellent for brainstorming and problem solving.
-                </p>
-                <a href="https://chat.openai.com" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access ChatGPT
-                </a>
+                <p class="llm-description">The pioneer of AI chatbots, excellent for brainstorming and problem solving.</p>
+                <a href="https://chat.openai.com" class="llm-link" target="_blank" rel="noopener noreferrer">Access ChatGPT</a>
             </article>
 
-            <!-- Gemini -->
             <article class="llm-card" data-category="conversational research">
-                <div class="status-indicator" aria-label="Active service"></div>
                 <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #4285f4, #34a853);">G</div>
+                    <div class="llm-icon">G</div>
                     <div>
                         <h2 class="llm-title">Gemini</h2>
                         <div class="llm-company">Google</div>
                     </div>
                 </div>
-                <p class="llm-description">
-                    Google's multimodal LLM, integrated with Google services.
-                </p>
-                <a href="https://gemini.google.com" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Gemini
-                </a>
+                <p class="llm-description">Google's multimodal LLM, integrated with Google services.</p>
+                <a href="https://gemini.google.com" class="llm-link" target="_blank" rel="noopener noreferrer">Access Gemini</a>
             </article>
-
-            <!-- Perplexity -->
-            <article class="llm-card" data-category="research conversational">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #8b5cf6, #a855f7);">P</div>
-                    <div>
-                        <h2 class="llm-title">Perplexity</h2>
-                        <div class="llm-company">Perplexity AI</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI search engine with real-time web search and citations.
-                </p>
-                <a href="https://perplexity.ai" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Perplexity
-                </a>
-            </article>
-
-            <!-- Grok -->
-            <article class="llm-card" data-category="conversational">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #000000, #1da1f2);">Gr</div>
-                    <div>
-                        <h2 class="llm-title">Grok</h2>
-                        <div class="llm-company">xAI</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI assistant with real-time access to X platform and wit.
-                </p>
-                <a href="https://grok.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Grok
-                </a>
-            </article>
-
-            <!-- Kimi -->
-            <article class="llm-card" data-category="conversational">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #ff6b6b, #ff8e53);">Ki</div>
-                    <div>
-                        <h2 class="llm-title">Kimi</h2>
-                        <div class="llm-company">Moonshot AI</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI assistant with long context window and document analysis.
-                </p>
-                <a href="https://www.kimi.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Kimi
-                </a>
-            </article>
-
-            <!-- Qwen -->
-            <article class="llm-card" data-category="conversational">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #ff6a00, #ff8f00);">Qw</div>
-                    <div>
-                        <h2 class="llm-title">Qwen</h2>
-                        <div class="llm-company">Alibaba</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Multilingual AI assistant with strong reasoning capabilities.
-                </p>
-                <a href="https://chat.qwen.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Qwen
-                </a>
-            </article>
-
-            <!-- Mistral -->
-            <article class="llm-card" data-category="conversational">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #e11d48, #be185d);">Mi</div>
-                    <div>
-                        <h2 class="llm-title">Mistral AI</h2>
-                        <div class="llm-company">Mistral AI</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    European AI assistant focused on efficiency and performance.
-                </p>
-                <a href="https://chat.mistral.ai/chat" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Mistral
-                </a>
-            </article>
-
-            <!-- DeepSeek -->
-            <article class="llm-card" data-category="conversational coding">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #0f172a, #1e293b);">DS</div>
-                    <div>
-                        <h2 class="llm-title">DeepSeek</h2>
-                        <div class="llm-company">DeepSeek</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI assistant with strong coding and mathematical reasoning abilities.
-                </p>
-                <a href="https://chat.deepseek.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access DeepSeek
-                </a>
-            </article>
-
-            <!-- Microsoft Copilot -->
-            <article class="llm-card" data-category="conversational research">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #0078d4, #106ebe);">Co</div>
-                    <div>
-                        <h2 class="llm-title">Microsoft Copilot</h2>
-                        <div class="llm-company">Microsoft</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI assistant integrated with Microsoft services and web search.
-                </p>
-                <a href="https://copilot.microsoft.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Microsoft Copilot
-                </a>
-            </article>
-
-            <!-- Meta AI -->
-            <article class="llm-card" data-category="conversational">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #1877f2, #42a5f5);">Ll</div>
-                    <div>
-                        <h2 class="llm-title">Meta AI</h2>
-                        <div class="llm-company">Meta (LLAMA 4)</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Latest generation LLAMA model with advanced reasoning capabilities.
-                </p>
-                <a href="https://www.meta.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Meta AI
-                </a>
-            </article>
-
-            <!-- LLMs Aggregator Section -->
-            <!-- Hugging Face -->
-            <article class="llm-card" data-category="aggregator">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #ff6f00, #ff8f00);">🤗</div>
-                    <div>
-                        <h2 class="llm-title">Hugging Face</h2>
-                        <div class="llm-company">Hugging Face</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Open-source platform with access to thousands of AI models and datasets.
-                </p>
-                <a href="https://huggingface.co/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Hugging Face
-                </a>
-            </article>
-
-            <!-- Poe -->
-            <article class="llm-card" data-category="aggregator">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #dc143c, #b91c1c);">Po</div>
-                    <div>
-                        <h2 class="llm-title">Poe</h2>
-                        <div class="llm-company">Quora</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Access multiple AI models from different providers in one platform.
-                </p>
-                <a href="https://poe.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Poe
-                </a>
-            </article>
-
-            <!-- NotebookLM -->
-            <article class="llm-card" data-category="research">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #4285f4, #34a853);">NB</div>
-                    <div>
-                        <h2 class="llm-title">NotebookLM</h2>
-                        <div class="llm-company">Google</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI research assistant that turns your documents into interactive notebooks.
-                </p>
-                <a href="https://notebooklm.google.com" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access NotebookLM
-                </a>
-            </article>
-
-            <!-- You.com -->
-            <article class="llm-card" data-category="research">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #0052cc, #2684ff);">Yu</div>
-                    <div>
-                        <h2 class="llm-title">You.com</h2>
-                        <div class="llm-company">You.com</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI-powered search engine with conversational interface and citations.
-                </p>
-                <a href="https://you.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access You.com
-                </a>
-            </article>
-
-            <!-- Phind -->
-            <article class="llm-card" data-category="research coding">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #00c851, #007e33);">Ph</div>
-                    <div>
-                        <h2 class="llm-title">Phind</h2>
-                        <div class="llm-company">Phind</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI search engine specialized for developers and technical research.
-                </p>
-                <a href="https://www.phind.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Phind
-                </a>
-            </article>
-
-            <!-- AI App Generators Section -->
-            <!-- Lovable -->
-            <article class="llm-card" data-category="app-generator">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #ff4081, #e91e63);">L</div>
-                    <div>
-                        <h2 class="llm-title">Lovable</h2>
-                        <div class="llm-company">Lovable AI</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI-powered full-stack app generator with modern frameworks.
-                </p>
-                <a href="https://lovable.dev" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Lovable
-                </a>
-            </article>
-
-            <!-- bolt.new -->
-            <article class="llm-card" data-category="app-generator">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #f39c12, #e67e22);">B</div>
-                    <div>
-                        <h2 class="llm-title">bolt.new</h2>
-                        <div class="llm-company">StackBlitz</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI-powered web development platform for instant app creation.
-                </p>
-                <a href="https://bolt.new" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access bolt.new
-                </a>
-            </article>
-
-            <!-- V0.dev -->
-            <article class="llm-card" data-category="app-generator">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #000000, #333333);">V0</div>
-                    <div>
-                        <h2 class="llm-title">V0.dev</h2>
-                        <div class="llm-company">Vercel</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI-powered UI generator with React components and modern design.
-                </p>
-                <a href="https://v0.dev" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access V0.dev
-                </a>
-            </article>
-
-            <!-- Cursor -->
-            <article class="llm-card" data-category="app-generator coding">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">Cu</div>
-                    <div>
-                        <h2 class="llm-title">Cursor</h2>
-                        <div class="llm-company">Cursor</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI-first code editor with intelligent autocomplete and generation.
-                </p>
-                <a href="https://cursor.sh" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Cursor
-                </a>
-            </article>
-
-            <!-- Replit -->
-            <article class="llm-card" data-category="app-generator coding">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">R</div>
-                    <div>
-                        <h2 class="llm-title">Replit</h2>
-                        <div class="llm-company">Replit</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Cloud-based development environment with AI-powered coding.
-                </p>
-                <a href="https://replit.com" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Replit
-                </a>
-            </article>
-
-            <!-- GitHub Copilot -->
-            <article class="llm-card" data-category="coding">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #000000, #24292e);">GH</div>
-                    <div>
-                        <h2 class="llm-title">GitHub Copilot</h2>
-                        <div class="llm-company">GitHub (Microsoft)</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    AI pair programmer that suggests code and entire functions in real-time.
-                </p>
-                <a href="https://github.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access GitHub Copilot
-                </a>
-            </article>
-
-            <!-- UI Bakery -->
-            <article class="llm-card" data-category="app-generator">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #14b8a6, #0d9488);">UI</div>
-                    <div>
-                        <h2 class="llm-title">UI Bakery</h2>
-                        <div class="llm-company">UI Bakery</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Low-code platform for building internal tools and apps quickly.
-                </p>
-                <a href="https://uibakery.io" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access UI Bakery
-                </a>
-            </article>
-
-            <!-- Agents Section -->
-            <!-- CrewAI -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">Cr</div>
-                    <div>
-                        <h2 class="llm-title">CrewAI</h2>
-                        <div class="llm-company">CrewAI</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Framework for orchestrating role-playing AI agents for complex tasks.
-                </p>
-                <a href="https://www.crewai.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access CrewAI
-                </a>
-            </article>
-
-            <!-- AutoGen -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #0078d4, #106ebe);">Au</div>
-                    <div>
-                        <h2 class="llm-title">AutoGen</h2>
-                        <div class="llm-company">Microsoft</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Multi-agent conversation framework for complex problem solving.
-                </p>
-                <a href="https://microsoft.github.io/autogen/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access AutoGen
-                </a>
-            </article>
-
-            <!-- LangChain -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #10b981, #059669);">LC</div>
-                    <div>
-                        <h2 class="llm-title">LangChain</h2>
-                        <div class="llm-company">LangChain</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Framework for developing applications with language models.
-                </p>
-                <a href="https://www.langchain.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access LangChain
-                </a>
-            </article>
-
-            <!-- LangFlow -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">LF</div>
-                    <div>
-                        <h2 class="llm-title">LangFlow</h2>
-                        <div class="llm-company">LangFlow</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Visual framework for building multi-agent and RAG applications.
-                </p>
-                <a href="https://www.langflow.org/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access LangFlow
-                </a>
-            </article>
-
-            <!-- Dify -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">Di</div>
-                    <div>
-                        <h2 class="llm-title">Dify</h2>
-                        <div class="llm-company">Dify</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Open-source LLM app development platform with agent workflows.
-                </p>
-                <a href="https://dify.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Dify
-                </a>
-            </article>
-
-            <!-- AutoGPT -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #dc2626, #b91c1c);">AG</div>
-                    <div>
-                        <h2 class="llm-title">AutoGPT</h2>
-                        <div class="llm-company">AutoGPT</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Autonomous AI agent that chains together LLM thoughts.
-                </p>
-                <a href="https://agpt.co/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access AutoGPT
-                </a>
-            </article>
-
-            <!-- n8n -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #ea384c, #c5282f);">n8</div>
-                    <div>
-                        <h2 class="llm-title">n8n</h2>
-                        <div class="llm-company">n8n</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Workflow automation platform with AI agent capabilities.
-                </p>
-                <a href="https://n8n.io/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access n8n
-                </a>
-            </article>
-
-            <!-- Botpress -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">Bp</div>
-                    <div>
-                        <h2 class="llm-title">Botpress</h2>
-                        <div class="llm-company">Botpress</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Open-source conversational AI platform for building chatbots.
-                </p>
-                <a href="https://botpress.com/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Botpress
-                </a>
-            </article>
-
-            <!-- OpenAI Swarm -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #000000, #374151);">Sw</div>
-                    <div>
-                        <h2 class="llm-title">OpenAI Swarm</h2>
-                        <div class="llm-company">OpenAI</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Experimental framework for building multi-agent systems.
-                </p>
-                <a href="https://github.com/openai/swarm" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Swarm
-                </a>
-            </article>
-
-            <!-- Mastra -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">Ma</div>
-                    <div>
-                        <h2 class="llm-title">Mastra</h2>
-                        <div class="llm-company">Mastra</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Agent framework for building AI-powered applications.
-                </p>
-                <a href="https://mastra.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access Mastra
-                </a>
-            </article>
-
-            <!-- LlamaIndex -->
-            <article class="llm-card" data-category="agents research">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">Li</div>
-                    <div>
-                        <h2 class="llm-title">LlamaIndex</h2>
-                        <div class="llm-company">LlamaIndex</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Data framework for connecting LLMs with external data sources.
-                </p>
-                <a href="https://www.llamaindex.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access LlamaIndex
-                </a>
-            </article>
-
-            <!-- AgentOps -->
-            <article class="llm-card" data-category="agents">
-                <div class="status-indicator" aria-label="Active service"></div>
-                <div class="llm-header">
-                    <div class="llm-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">AO</div>
-                    <div>
-                        <h2 class="llm-title">AgentOps</h2>
-                        <div class="llm-company">AgentOps</div>
-                    </div>
-                </div>
-                <p class="llm-description">
-                    Observability and monitoring platform for AI agents.
-                </p>
-                <a href="https://agentops.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">
-                    Access AgentOps
-                </a>
-            </article>
-        </main>
+            
+            </main>
 
         <footer class="footer">
             <p>
                 Augmented Intelligence Directory - Updated on <time datetime="2025-08-20">August 20, 2025</time><br>
-                Complete directory for LLMs, Agent Framework and AI App Generator.
+                A complete directory for LLMs, Agent Frameworks, and AI App Generators.
                 <br><br>
                 <strong>Note:</strong> Always verify the terms of service of each platform before use.
             </p>
@@ -1173,66 +413,52 @@
     </div>
 
     <script>
-        // Funzionalità filtri
-        const llmGrid = document.getElementById('llmGrid');
-        const cards = document.querySelectorAll('.llm-card');
-        const filterButtons = document.querySelectorAll('.filter-btn');
+        // Il codice JavaScript non richiede modifiche
+        document.addEventListener('DOMContentLoaded', () => {
+            const llmGrid = document.getElementById('llmGrid');
+            const cards = document.querySelectorAll('.llm-card');
+            const filterButtons = document.querySelectorAll('.filter-btn');
 
-        // Inizializza con filtro LLMs attivo
-        cards.forEach(card => {
-            const categories = card.dataset.category;
-            const isVisible = categories.includes('conversational');
-            card.style.display = isVisible ? 'block' : 'none';
-        });
-
-        // Filtri categoria
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Rimuovi active da tutti i bottoni
-                filterButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.setAttribute('aria-selected', 'false');
-                });
-                
-                // Aggiungi active al bottone cliccato
-                button.classList.add('active');
-                button.setAttribute('aria-selected', 'true');
-                
-                const filter = button.dataset.filter;
-                
+            function filterCards(filter) {
                 cards.forEach(card => {
-                    const categories = card.dataset.category;
+                    const categories = card.dataset.category || '';
                     const isVisible = categories.includes(filter);
-                    card.style.display = isVisible ? 'block' : 'none';
+                    card.style.display = isVisible ? 'flex' : 'none';
                 });
-                
-                // Reset quando si cambia filtro - nessuna ricerca da resettare
-            });
-        });
+            }
 
-        // Accessibilità: navigazione da tastiera per i filtri
-        filterButtons.forEach((button, index) => {
-            button.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    const nextIndex = (index + 1) % filterButtons.length;
-                    filterButtons[nextIndex].focus();
-                } else if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    const prevIndex = (index - 1 + filterButtons.length) % filterButtons.length;
-                    filterButtons[prevIndex].focus();
-                }
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+                    
+                    button.classList.add('active');
+                    button.setAttribute('aria-selected', 'true');
+                    
+                    const filter = button.dataset.filter;
+                    filterCards(filter);
+                });
             });
-        });
+            
+            // Inizializza con filtro LLMs attivo
+            filterCards('conversational');
 
-        // Gestione del focus per accessibilità
-        cards.forEach(card => {
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    const link = card.querySelector('.llm-link');
-                    if (link) link.click();
-                }
+            // Accessibilità
+            filterButtons.forEach((button, index) => {
+                button.addEventListener('keydown', (e) => {
+                    let nextIndex;
+                    if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        nextIndex = (index + 1) % filterButtons.length;
+                        filterButtons[nextIndex].focus();
+                    } else if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        nextIndex = (index - 1 + filterButtons.length) % filterButtons.length;
+                        filterButtons[nextIndex].focus();
+                    }
+                });
             });
         });
     </script>
