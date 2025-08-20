@@ -215,4 +215,597 @@
       .llm-grid{ grid-template-columns:1fr; }
       .category-filter{ flex-direction:column; align-items:center; }
       .book-content{ flex-direction:column; text-align:center; gap:1rem; }
-      .book-v
+      .book-visual{ order:-1; }
+      .book-image{ width:120px; height:150px; margin:0 auto; }
+      .book-links{ flex-direction:column; align-items:center; gap:1rem; width:100%; }
+      .link-group{ min-width:200px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Augmented Intelligence</h1>
+      <p style="margin:.5rem 0 1rem 0; font-size:1rem; color:var(--text-light); font-style:italic; text-align:right; width:100%;">
+        by <a href="https://www.linkedin.com/in/emanuelecastagno/" target="_blank" rel="noopener noreferrer" style="color:var(--primary-color); text-decoration:none; font-weight:500;">Emanuele Castagno (LinkedIn)</a>
+      </p>
+      <h1 style="margin-top:.5rem; margin-bottom:1rem; font-size:2.5rem; color:var(--primary-color); font-weight:700;">AI Directory</h1>
+      <p>LLMs, Agents, AI App Generator — Complete toolkit for AI-powered development and automation</p>
+    </header>
+
+    <!-- Book Promotion Banner -->
+    <section class="book-banner" aria-labelledby="book-title">
+      <div class="book-content">
+        <div class="book-visual">
+          <div class="book-image">
+            <img
+              src="https://i.postimg.cc/vmFCXD7g/Augmented-Intelligence-user-preview.png"
+              alt="Augmented Intelligence Book Cover"
+              class="book-cover-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-placeholder" style="display:none;">
+              📚<br /><small>Augmented<br />Intelligence</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="book-info">
+          <h3 id="book-title">📚 New Book: “Augmented Intelligence”</h3>
+          <p>Discover the future of AI and how to enhance your cognitive abilities with artificial intelligence.</p>
+        </div>
+
+        <div class="book-links" aria-label="Purchase links">
+          <div class="link-group" role="group" aria-label="English edition">
+            <span class="flag" aria-hidden="true">🇬🇧</span>
+            <a href="https://a.co/d/fMU5kJa" target="_blank" rel="noopener noreferrer" class="book-link amazon">Amazon EN</a>
+            <a href="https://lnkd.in/dxRxSutn" target="_blank" rel="noopener noreferrer" class="book-link apple">Apple Books</a>
+          </div>
+          <div class="link-group" role="group" aria-label="Italian edition">
+            <span class="flag" aria-hidden="true">🇮🇹</span>
+            <a href="https://amzn.eu/d/9EVzfnH" target="_blank" rel="noopener noreferrer" class="book-link amazon">Amazon IT</a>
+            <a href="https://lnkd.in/dpPEpKZX" target="_blank" rel="noopener noreferrer" class="book-link apple">Apple Books</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <nav class="category-filter" role="tablist" aria-label="Category filters">
+      <button class="filter-btn active" data-filter="conversational" role="tab" aria-selected="true">LLMs</button>
+      <button class="filter-btn" data-filter="aggregator" role="tab" aria-selected="false">LLMs Aggregator</button>
+      <button class="filter-btn" data-filter="agents" role="tab" aria-selected="false">Agents</button>
+      <button class="filter-btn" data-filter="app-generator" role="tab" aria-selected="false">App Generator</button>
+      <button class="filter-btn" data-filter="coding" role="tab" aria-selected="false">Coding</button>
+      <button class="filter-btn" data-filter="research" role="tab" aria-selected="false">Research</button>
+    </nav>
+
+    <!-- Cards grid -->
+    <main class="llm-grid" id="llmGrid">
+      <!-- LLMs -->
+      <article class="llm-card" data-category="conversational">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#FF6B6B,#EE5A24);">C</div>
+          <div>
+            <h2 class="llm-title">Claude</h2>
+            <div class="llm-company">Anthropic</div>
+          </div>
+        </div>
+        <p class="llm-description">Advanced AI assistant for complex conversations, document and image analysis.</p>
+        <a href="https://claude.ai" class="llm-link" target="_blank" rel="noopener noreferrer">Access Claude</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational coding">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#10AC84,#00D2D3);">GPT</div>
+          <div>
+            <h2 class="llm-title">ChatGPT</h2>
+            <div class="llm-company">OpenAI</div>
+          </div>
+        </div>
+        <p class="llm-description">The pioneer of AI chatbots, excellent for brainstorming and problem solving.</p>
+        <a href="https://chat.openai.com" class="llm-link" target="_blank" rel="noopener noreferrer">Access ChatGPT</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational research">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#4285F4,#34A853);">G</div>
+          <div>
+            <h2 class="llm-title">Gemini</h2>
+            <div class="llm-company">Google</div>
+          </div>
+        </div>
+        <p class="llm-description">Google's multimodal LLM, integrated with Google services.</p>
+        <a href="https://gemini.google.com" class="llm-link" target="_blank" rel="noopener noreferrer">Access Gemini</a>
+      </article>
+
+      <article class="llm-card" data-category="research conversational">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#8B5CF6,#A855F7);">P</div>
+          <div>
+            <h2 class="llm-title">Perplexity</h2>
+            <div class="llm-company">Perplexity AI</div>
+          </div>
+        </div>
+        <p class="llm-description">AI search engine with real-time web search and citations.</p>
+        <a href="https://perplexity.ai" class="llm-link" target="_blank" rel="noopener noreferrer">Access Perplexity</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#000000,#1DA1F2);">Gr</div>
+          <div>
+            <h2 class="llm-title">Grok</h2>
+            <div class="llm-company">xAI</div>
+          </div>
+        </div>
+        <p class="llm-description">AI assistant with real-time access to X platform and wit.</p>
+        <a href="https://grok.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Grok</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#FF6B6B,#FF8E53);">Ki</div>
+          <div>
+            <h2 class="llm-title">Kimi</h2>
+            <div class="llm-company">Moonshot AI</div>
+          </div>
+        </div>
+        <p class="llm-description">AI assistant with long context window and document analysis.</p>
+        <a href="https://www.kimi.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Kimi</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#FF6A00,#FF8F00);">Qw</div>
+          <div>
+            <h2 class="llm-title">Qwen</h2>
+            <div class="llm-company">Alibaba</div>
+          </div>
+        </div>
+        <p class="llm-description">Multilingual AI assistant with strong reasoning capabilities.</p>
+        <a href="https://chat.qwen.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Qwen</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#E11D48,#BE185D);">Mi</div>
+          <div>
+            <h2 class="llm-title">Mistral AI</h2>
+            <div class="llm-company">Mistral AI</div>
+          </div>
+        </div>
+        <p class="llm-description">European AI assistant focused on efficiency and performance.</p>
+        <a href="https://chat.mistral.ai/chat" class="llm-link" target="_blank" rel="noopener noreferrer">Access Mistral</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational coding">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#0F172A,#1E293B);">DS</div>
+          <div>
+            <h2 class="llm-title">DeepSeek</h2>
+            <div class="llm-company">DeepSeek</div>
+          </div>
+        </div>
+        <p class="llm-description">AI assistant with strong coding and mathematical reasoning abilities.</p>
+        <a href="https://chat.deepseek.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access DeepSeek</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational research">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#0078D4,#106EBE);">Co</div>
+          <div>
+            <h2 class="llm-title">Microsoft Copilot</h2>
+            <div class="llm-company">Microsoft</div>
+          </div>
+        </div>
+        <p class="llm-description">AI assistant integrated with Microsoft services and web search.</p>
+        <a href="https://copilot.microsoft.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Microsoft Copilot</a>
+      </article>
+
+      <article class="llm-card" data-category="conversational">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#1877F2,#42A5F5);">Ll</div>
+          <div>
+            <h2 class="llm-title">Meta AI</h2>
+            <div class="llm-company">Meta (LLAMA 4)</div>
+          </div>
+        </div>
+        <p class="llm-description">Latest generation LLAMA model with advanced reasoning capabilities.</p>
+        <a href="https://www.meta.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Meta AI</a>
+      </article>
+
+      <!-- Aggregators & Research -->
+      <article class="llm-card" data-category="aggregator">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#FF6F00,#FF8F00);">🤗</div>
+          <div>
+            <h2 class="llm-title">Hugging Face</h2>
+            <div class="llm-company">Hugging Face</div>
+          </div>
+        </div>
+        <p class="llm-description">Open-source platform with access to thousands of AI models and datasets.</p>
+        <a href="https://huggingface.co/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Hugging Face</a>
+      </article>
+
+      <article class="llm-card" data-category="aggregator">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#DC143C,#B91C1C);">Po</div>
+          <div>
+            <h2 class="llm-title">Poe</h2>
+            <div class="llm-company">Quora</div>
+          </div>
+        </div>
+        <p class="llm-description">Access multiple AI models from different providers in one platform.</p>
+        <a href="https://poe.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Poe</a>
+      </article>
+
+      <article class="llm-card" data-category="research">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#4285F4,#34A853);">NB</div>
+          <div>
+            <h2 class="llm-title">NotebookLM</h2>
+            <div class="llm-company">Google</div>
+          </div>
+        </div>
+        <p class="llm-description">AI research assistant that turns your documents into interactive notebooks.</p>
+        <a href="https://notebooklm.google.com" class="llm-link" target="_blank" rel="noopener noreferrer">Access NotebookLM</a>
+      </article>
+
+      <article class="llm-card" data-category="research">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#0052CC,#2684FF);">Yu</div>
+          <div>
+            <h2 class="llm-title">You.com</h2>
+            <div class="llm-company">You.com</div>
+          </div>
+        </div>
+        <p class="llm-description">AI-powered search engine with conversational interface and citations.</p>
+        <a href="https://you.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access You.com</a>
+      </article>
+
+      <article class="llm-card" data-category="research coding">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#00C851,#007E33);">Ph</div>
+          <div>
+            <h2 class="llm-title">Phind</h2>
+            <div class="llm-company">Phind</div>
+          </div>
+        </div>
+        <p class="llm-description">AI search engine specialized for developers and technical research.</p>
+        <a href="https://www.phind.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Phind</a>
+      </article>
+
+      <!-- App Generators & Coding -->
+      <article class="llm-card" data-category="app-generator">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#FF4081,#E91E63);">L</div>
+          <div>
+            <h2 class="llm-title">Lovable</h2>
+            <div class="llm-company">Lovable AI</div>
+          </div>
+        </div>
+        <p class="llm-description">AI-powered full-stack app generator with modern frameworks.</p>
+        <a href="https://lovable.dev" class="llm-link" target="_blank" rel="noopener noreferrer">Access Lovable</a>
+      </article>
+
+      <article class="llm-card" data-category="app-generator">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#F39C12,#E67E22);">B</div>
+          <div>
+            <h2 class="llm-title">bolt.new</h2>
+            <div class="llm-company">StackBlitz</div>
+          </div>
+        </div>
+        <p class="llm-description">AI-powered web development platform for instant app creation.</p>
+        <a href="https://bolt.new" class="llm-link" target="_blank" rel="noopener noreferrer">Access bolt.new</a>
+      </article>
+
+      <article class="llm-card" data-category="app-generator">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#000000,#333333);">V0</div>
+          <div>
+            <h2 class="llm-title">V0.dev</h2>
+            <div class="llm-company">Vercel</div>
+          </div>
+        </div>
+        <p class="llm-description">AI-powered UI generator with React components and modern design.</p>
+        <a href="https://v0.dev" class="llm-link" target="_blank" rel="noopener noreferrer">Access V0.dev</a>
+      </article>
+
+      <article class="llm-card" data-category="app-generator coding">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);">Cu</div>
+          <div>
+            <h2 class="llm-title">Cursor</h2>
+            <div class="llm-company">Cursor</div>
+          </div>
+        </div>
+        <p class="llm-description">AI-first code editor with intelligent autocomplete and generation.</p>
+        <a href="https://cursor.sh" class="llm-link" target="_blank" rel="noopener noreferrer">Access Cursor</a>
+      </article>
+
+      <article class="llm-card" data-category="app-generator coding">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#F97316,#EA580C);">R</div>
+          <div>
+            <h2 class="llm-title">Replit</h2>
+            <div class="llm-company">Replit</div>
+          </div>
+        </div>
+        <p class="llm-description">Cloud-based development environment with AI-powered coding.</p>
+        <a href="https://replit.com" class="llm-link" target="_blank" rel="noopener noreferrer">Access Replit</a>
+      </article>
+
+      <article class="llm-card" data-category="coding">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#000000,#24292E);">GH</div>
+          <div>
+            <h2 class="llm-title">GitHub Copilot</h2>
+            <div class="llm-company">GitHub (Microsoft)</div>
+          </div>
+        </div>
+        <p class="llm-description">AI pair programmer that suggests code and entire functions in real-time.</p>
+        <a href="https://github.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access GitHub Copilot</a>
+      </article>
+
+      <article class="llm-card" data-category="app-generator">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#14B8A6,#0D9488);">UI</div>
+          <div>
+            <h2 class="llm-title">UI Bakery</h2>
+            <div class="llm-company">UI Bakery</div>
+          </div>
+        </div>
+        <p class="llm-description">Low-code platform for building internal tools and apps quickly.</p>
+        <a href="https://uibakery.io" class="llm-link" target="_blank" rel="noopener noreferrer">Access UI Bakery</a>
+      </article>
+
+      <!-- Agents -->
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);">Cr</div>
+          <div>
+            <h2 class="llm-title">CrewAI</h2>
+            <div class="llm-company">CrewAI</div>
+          </div>
+        </div>
+        <p class="llm-description">Framework for orchestrating role-playing AI agents for complex tasks.</p>
+        <a href="https://www.crewai.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access CrewAI</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#0078D4,#106EBE);">Au</div>
+          <div>
+            <h2 class="llm-title">AutoGen</h2>
+            <div class="llm-company">Microsoft</div>
+          </div>
+        </div>
+        <p class="llm-description">Multi-agent conversation framework for complex problem solving.</p>
+        <a href="https://microsoft.github.io/autogen/" class="llm-link" target="_blank" rel="noopener noreferrer">Access AutoGen</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#10B981,#059669);">LC</div>
+          <div>
+            <h2 class="llm-title">LangChain</h2>
+            <div class="llm-company">LangChain</div>
+          </div>
+        </div>
+        <p class="llm-description">Framework for developing applications with language models.</p>
+        <a href="https://www.langchain.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access LangChain</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);">LF</div>
+          <div>
+            <h2 class="llm-title">LangFlow</h2>
+            <div class="llm-company">LangFlow</div>
+          </div>
+        </div>
+        <p class="llm-description">Visual framework for building multi-agent and RAG applications.</p>
+        <a href="https://www.langflow.org/" class="llm-link" target="_blank" rel="noopener noreferrer">Access LangFlow</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#F59E0B,#D97706);">Di</div>
+          <div>
+            <h2 class="llm-title">Dify</h2>
+            <div class="llm-company">Dify</div>
+          </div>
+        </div>
+        <p class="llm-description">Open-source LLM app development platform with agent workflows.</p>
+        <a href="https://dify.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Dify</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#DC2626,#B91C1C);">AG</div>
+          <div>
+            <h2 class="llm-title">AutoGPT</h2>
+            <div class="llm-company">AutoGPT</div>
+          </div>
+        </div>
+        <p class="llm-description">Autonomous AI agent that chains together LLM thoughts.</p>
+        <a href="https://agpt.co/" class="llm-link" target="_blank" rel="noopener noreferrer">Access AutoGPT</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#EA384C,#C5282F);">n8</div>
+          <div>
+            <h2 class="llm-title">n8n</h2>
+            <div class="llm-company">n8n</div>
+          </div>
+        </div>
+        <p class="llm-description">Workflow automation platform with AI agent capabilities.</p>
+        <a href="https://n8n.io/" class="llm-link" target="_blank" rel="noopener noreferrer">Access n8n</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#3B82F6,#2563EB);">Bp</div>
+          <div>
+            <h2 class="llm-title">Botpress</h2>
+            <div class="llm-company">Botpress</div>
+          </div>
+        </div>
+        <p class="llm-description">Open-source conversational AI platform for building chatbots.</p>
+        <a href="https://botpress.com/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Botpress</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#000000,#374151);">Sw</div>
+          <div>
+            <h2 class="llm-title">OpenAI Swarm</h2>
+            <div class="llm-company">OpenAI</div>
+          </div>
+        </div>
+        <p class="llm-description">Experimental framework for building multi-agent systems.</p>
+        <a href="https://github.com/openai/swarm" class="llm-link" target="_blank" rel="noopener noreferrer">Access Swarm</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#7C3AED,#6D28D9);">Ma</div>
+          <div>
+            <h2 class="llm-title">Mastra</h2>
+            <div class="llm-company">Mastra</div>
+          </div>
+        </div>
+        <p class="llm-description">Agent framework for building AI-powered applications.</p>
+        <a href="https://mastra.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">Access Mastra</a>
+      </article>
+
+      <article class="llm-card" data-category="agents research">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#F97316,#EA580C);">Li</div>
+          <div>
+            <h2 class="llm-title">LlamaIndex</h2>
+            <div class="llm-company">LlamaIndex</div>
+          </div>
+        </div>
+        <p class="llm-description">Data framework for connecting LLMs with external data sources.</p>
+        <a href="https://www.llamaindex.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">Access LlamaIndex</a>
+      </article>
+
+      <article class="llm-card" data-category="agents">
+        <div class="status-indicator" aria-label="Active service"></div>
+        <div class="llm-header">
+          <div class="llm-icon" style="background:linear-gradient(135deg,#EF4444,#DC2626);">AO</div>
+          <div>
+            <h2 class="llm-title">AgentOps</h2>
+            <div class="llm-company">AgentOps</div>
+          </div>
+        </div>
+        <p class="llm-description">Observability and monitoring platform for AI agents.</p>
+        <a href="https://agentops.ai/" class="llm-link" target="_blank" rel="noopener noreferrer">Access AgentOps</a>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Augmented Intelligence Directory — Updated on <time datetime="2025-08-20">August 20, 2025</time><br/>
+        Complete directory for LLMs, Agent Framework and AI App Generator.
+        <br/><br/>
+        <strong>Note:</strong> Always verify the terms of service of each platform before use.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Filtering
+    const llmGrid = document.getElementById('llmGrid');
+    const cards = document.querySelectorAll('.llm-card');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    // Default: show LLMs (conversational)
+    cards.forEach(card => {
+      const cats = card.dataset.category || '';
+      card.style.display = cats.includes('conversational') ? 'block' : 'none';
+    });
+
+    // Category handlers
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected','false');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-selected','true');
+
+        const filter = button.dataset.filter;
+        cards.forEach(card => {
+          const cats = card.dataset.category || '';
+          card.style.display = cats.includes(filter) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Keyboard nav for filters
+    filterButtons.forEach((button, index) => {
+      button.addEventListener('keydown', e => {
+        if(e.key === 'ArrowRight'){
+          e.preventDefault();
+          filterButtons[(index + 1) % filterButtons.length].focus();
+        }else if(e.key === 'ArrowLeft'){
+          e.preventDefault();
+          filterButtons[(index - 1 + filterButtons.length) % filterButtons.length].focus();
+        }
+      });
+    });
+
+    // Card focus activation
+    cards.forEach(card => {
+      card.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          const link = card.querySelector('.llm-link');
+          if(link) link.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
