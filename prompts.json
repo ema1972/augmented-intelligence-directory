@@ -406,5 +406,17 @@
   "testo": "Voglio simulare una conversazione difficile di feedback con un manager senior che: non rispetta le scadenze; reagisce difensivamente; è tecnicamente ottimo ma crea problemi di team. Interpreta il suo ruolo mentre pratico. Dopo ogni mio intervento: 1) rispondi in modo realistico secondo il profilo; 2) annota se il mio approccio è efficace e perché; 3) varia le reazioni in base al mio approccio. Alla fine fornisci un'analisi di punti di forza, aree di miglioramento e tecniche che avrei potuto usare.",
   "output": "",
   "output_url": ""
+ },
+ {
+  "id": "IA-35",
+  "categoria": "Comunicazione",
+  "capitolo": "Cap. 3",
+  "scopo": "Revisione linguistica di email in inglese",
+  "descrizione": "Rileva errori, espressioni non idiomatiche e problemi di tono/registro in un'email in inglese, con spiegazione e correzione per ciascun rilievo.",
+  "slug": "email-revisione-inglese",
+  "tinyurl": "https://tinyurl.com/26t9bkbl",
+  "testo": "Analizza questa email scritta in inglese ed evidenzia in grassetto eventuali:\n1. Errori grammaticali o ortografici\n2. Espressioni poco naturali o non idiomatiche\n3. Problemi di punteggiatura o formattazione\n4. Termini non appropriati per il contesto professionale\n5. Incongruenze nel tono o nel registro linguistico\n\nPer ogni elemento evidenziato in grassetto, fornisci:\n1. Una spiegazione dell'errore o del problema\n2. Una proposta di correzione più appropriata\n3. Se pertinente, suggerimenti per migliorare ulteriormente la fluidità del testo\nEmail da revisionare: [INSERIRE L'EMAIL QUI]",
+  "output": "",
+  "output_url": ""
  }
 ]
