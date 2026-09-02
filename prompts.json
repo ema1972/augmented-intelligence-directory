@@ -186,7 +186,7 @@
   "scopo": "Adattare la lunghezza al canale",
   "descrizione": "Adatta lo stesso contenuto a blog, social e newsletter con lunghezze, stili e call to action diversi.",
   "slug": "adattamento-lunghezza-canale",
-  "tinyurl": "https://tinyurl.com/mf8pvjhw",
+  "tinyurl": "https://tinyurl.com/4wtkxbtt",
   "testo": "Adatta il seguente [white paper tecnico sulla cybersecurity] per diversi canali di comunicazione:\n\nVersione Blog (Articoli):\n• Lunghezza: 1000 parole\n• Focus su key insights\n• Stile divulgativo ma tecnico\n\nVersione Social (LinkedIn):\n• Lunghezza: 200 parole\n• Punti chiave e statistiche\n• Call to action\n\nVersione Newsletter:\n• Lunghezza: 150 parole\n• Abstract e value proposition\n• Link strategici\n\nMantenere per ogni versione:\n• Messaggi chiave\n• Credibilità tecnica\n• Coerenza del brand\n\nContenuto originale: [inserire contenuto]",
   "output": "",
   "output_url": ""
@@ -246,7 +246,7 @@
   "scopo": "Revisione di una presentazione",
   "descrizione": "Revisione completa di slide: grammatica, accuratezza, efficacia comunicativa e qualità grafica.",
   "slug": "verifica-presentazione",
-  "tinyurl": "https://tinyurl.com/25um9kv8",
+  "tinyurl": "https://tinyurl.com/48asbvzu",
   "testo": "Agisci come un esperto di comunicazione per mezzo di slide ed esegui una revisione completa della mia presentazione.\n\nIn particolare, desidero che venga effettuata un'analisi approfondita su quattro aspetti fondamentali:\n\nCorrettezza Grammaticale:\nSi prega di verificare l'intero testo della presentazione, individuando eventuali errori grammaticali, sintattici e ortografici, e suggerendo le opportune correzioni per garantire un uso impeccabile della lingua italiana.\n\nAccuratezza delle Informazioni:\nControllare la coerenza e la correttezza delle informazioni riportate, con particolare attenzione ai dati economici, finanziari e agli indicatori relativi al progresso strategico. Verificare che i numeri e le affermazioni siano coerenti e supportati da logica e fatti concreti. Chiedimi conferma qualora avessi dei dubbi.\n\nEfficacia della Comunicazione:\nFornire consigli dettagliati per migliorare la chiarezza e l'impatto comunicativo della presentazione. Suggerire eventuali modifiche nel linguaggio, nella struttura e nell'organizzazione dei contenuti, al fine di rendere il messaggio più diretto e coinvolgente per l'intero team.\n\nQualità Grafica e Visuale:\nOffrire indicazioni su come ottimizzare l'aspetto grafico delle slide. Questo include suggerimenti sul layout, l'uso appropriato dei colori, la scelta dei font, l'inserimento di elementi visivi (grafici, icone, immagini) e qualsiasi altra modifica che possa contribuire a una presentazione più professionale e accattivante.\n\nPer ciascuna delle sezioni sopra indicate, includi esempi pratici e suggerimenti specifici, in modo da poter implementare le eventuali modifiche con efficacia.",
   "output": "",
   "output_url": ""
@@ -403,7 +403,7 @@
   "descrizione": "Coach per la Tecnica Feynman: spiegare un concetto come a un dodicenne e farsi guidare nel raffinamento.",
   "slug": "feynman-technique",
   "tinyurl": "",
-  "testo": "Voglio utilizzare la Feynman Technique per consolidare la mia comprensione di [concetto]. Ti chiedo di fungere da coach: 1) ti spiegherò il concetto come a un dodicenne intelligente ma senza conoscenze specialistiche; 2) analizza la mia spiegazione e identifica termini non semplificati, passaggi logici saltati e concetti vaghi; 3) ponimi 3-5 domande \"ingenue\" ma penetranti; 4) guidami nel raffinare la spiegazione; 5) valuta infine quanto rifletta una comprensione profonda. Ecco la mia spiegazione: [spiegazione]",
+  "testo": "Voglio utilizzare la Feynman Technique per consolidare la mia comprensione di [concetto]. Ti chiedo di fungere da coach: 1) ti spiegherò il concetto come a un dodicenne intelligente ma senza conoscenze specialistiche; 2) analizza la mia spiegazione e identifica termini non semplificati, passaggi logici saltati e concetti vaghi; 3) ponimi 3-5 domande «ingenue» ma penetranti; 4) guidami nel raffinare la spiegazione; 5) valuta infine la chiarezza e la completezza della spiegazione rispetto ai concetti di riferimento, evidenzia le affermazioni che richiedono verifica e chiedimi di applicare il concetto a uno scenario nuovo, senza suggerirmi subito la soluzione. Ecco la mia spiegazione: [spiegazione]",
   "output": "",
   "output_url": ""
  },
@@ -415,7 +415,7 @@
   "descrizione": "Converte un argomento complesso in micro-moduli di 10-15 minuti adatti a un'agenda impegnata.",
   "slug": "microlearning-personalizzato",
   "tinyurl": "",
-  "testo": "Aiutami a convertire questo argomento in un piano di microlearning per la mia agenda impegnata. Argomento: [..]. Obiettivo: [..]. Slot tipici: 10-15 min tra riunioni; 20-30 min in auto; blocchi occasionali di 45 min. Crea un piano che: 1) suddivida in 12-15 micro-moduli consequenziali; 2) per ciascuno definisca obiettivo, formato ottimale (testo/audio/quiz/pratica), durata e prerequisiti; 3) organizzi i moduli in percorsi adattabili a diversi slot; 4) integri ripetizione e richiamo. Preferisco apprendimento [visuale/uditivo/pratico], livello [principiante/intermedio/avanzato].",
+  "testo": "Aiutami a convertire questo argomento in un piano di microlearning per la mia agenda impegnata. Argomento: [..]. Obiettivo: [..]. Slot tipici: 10-15 min tra riunioni; 20-30 min in auto; blocchi occasionali di 45 min. Crea un piano che: 1) suddivida in 12-15 micro-moduli in sequenza; 2) per ciascuno definisca obiettivo, formato ottimale (testo/audio/quiz/pratica), durata e prerequisiti; 3) organizzi i moduli in percorsi adattabili a diversi slot; 4) integri ripetizione distribuita e richiamo attivo. Alterna i formati in funzione dell'obiettivo di ciascun modulo, senza limitarti a uno solo; livello [principiante/intermedio/avanzato].",
   "output": "",
   "output_url": ""
  },
@@ -427,7 +427,7 @@
   "descrizione": "Role-play di una conversazione difficile (feedback, negoziazione) con analisi finale multi-prospettiva.",
   "slug": "simulazione-roleplay",
   "tinyurl": "",
-  "testo": "Voglio simulare una conversazione difficile di feedback con un manager senior che: non rispetta le scadenze; reagisce difensivamente; è tecnicamente ottimo ma crea problemi di team. Interpreta il suo ruolo mentre pratico. Dopo ogni mio intervento: 1) rispondi in modo realistico secondo il profilo; 2) annota se il mio approccio è efficace e perché; 3) varia le reazioni in base al mio approccio. Alla fine fornisci un'analisi di punti di forza, aree di miglioramento e tecniche che avrei potuto usare.",
+  "testo": "Voglio simulare una conversazione difficile di feedback con un manager senior che, nella simulazione: non rispetta le scadenze; reagisce in modo difensivo quando riceve osservazioni; è tecnicamente ottimo ma crea problemi nel gruppo. Interpreta il suo ruolo mentre pratico. Dopo ogni mio intervento: 1) rispondi in modo realistico secondo il profilo; 2) indica quali elementi della mia formulazione aumentano o riducono la chiarezza, quali informazioni mancano e quali reazioni potrebbe suscitare, senza valutare la mia personalità o le mie capacità professionali; 3) varia le reazioni in base al mio approccio. Alla fine riepiloga le tecniche comunicative utilizzate e proponi una seconda simulazione con difficoltà maggiore.",
   "output": "",
   "output_url": ""
  },
