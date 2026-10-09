@@ -55,7 +55,7 @@
   "descrizione": "Redige un'e-mail per proporre un incontro a un potenziale cliente.",
   "slug": "email-incontro-cliente",
   "tinyurl": "https://tinyurl.com/43uvkyjc",
-  "testo": "Crea un'e-mail di lead generation per il nostro servizio di assessment NIS2 (Network and Information Security, direttiva europea sulla sicurezza cibernetica) rivolta alle aziende di trasporto container marittimo. L'e-mail deve:\n1) Iniziare con un titolo d'impatto sulla scadenza imminente della NIS2 e i rischi di non-conformità\n2) Includere un breve paragrafo (3-4 righe) che evidenzi:\n- I nostri successi con la precedente direttiva NIS\n- Il nostro approccio integrato (cybersecurity + compliance + expertise settoriale)\n- Un dato concreto sui risultati ottenuti con altri clienti",
+  "testo": "Crea un’e-mail di lead generation per il nostro servizio di assessment NIS2 (Network and Information Security, direttiva europea sulla sicurezza cibernetica) rivolta alle aziende di trasporto container marittimo. L’e-mail deve:\n1) Iniziare con un titolo d’impatto sulla scadenza imminente della NIS2 e i rischi di non-conformità\n2) Includere un breve paragrafo (3-4 righe) che evidenzi:\n- I nostri successi con la precedente direttiva NIS\n- Il nostro approccio integrato (cybersecurity + compliance + expertise settoriale)\n- Un dato concreto sui risultati ottenuti con altri clienti\n3) Presentare in modo sintetico (massimo 3 punti) i benefici specifici per operatori marittimi\n4) Chiudere con una call-to-action diretta per una consulenza gratuita di 30 minuti\nTono: professionale ma conversazionale, massimo 15 righe totali, oggetto e-mail separato",
   "output": "",
   "output_url": ""
  },
