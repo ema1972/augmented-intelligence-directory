@@ -572,7 +572,7 @@ function outbox(p){
    ? `<div class="promptbox"><button class="copybtn" data-out="${esc(p.id)}">Copia</button><pre>${esc(p.output)}</pre></div>`
    : `<p style="color:var(--text-light);font-size:.9rem">Testo in arrivo — consulta l'output completo:</p>`;
  const link = '';
- return `<details class="outblock"><summary>📄 Output di esempio</summary><div class="body">${inner}${link}</div></details>`;
+ return `<details class="outblock" id="${esc(p.slug)}-output"><summary>📄 Output di esempio</summary><div class="body">${inner}${link}</div></details>`;
 }
 function render(){
  const q=curQ.toLowerCase();
@@ -588,7 +588,7 @@ function render(){
    </summary>
    <div class="body">${promptbox(p)}${outbox(p)}<div class="meta">ID ${esc(p.id)}</div></div>
   </details>`).join('');
- if(location.hash){const el=document.querySelector(location.hash);if(el){el.open=true;el.scrollIntoView({behavior:'smooth',block:'center'});}}
+ if(location.hash){const el=document.querySelector(location.hash);if(el){const card=el.closest('.card');if(card)card.open=true;el.open=true;el.scrollIntoView({behavior:'smooth',block:'center'});}}
 }
 filters.innerHTML=['Tutti',...CHAPS].map((c,i)=>`<button class="fbtn${i===0?' active':''}" data-c="${c}">${c}</button>`).join('');
 filters.addEventListener('click',e=>{if(e.target.classList.contains('fbtn')){document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');curChap=e.target.dataset.c;render();}});
