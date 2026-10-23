@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Augmented Intelligence — Prompt Library</title>
-<meta name="description" content="Libreria dei prompt del libro Augmented Intelligence di Emanuele Castagno / Prompt library for the book Augmented Intelligence by Emanuele Castagno: ready-to-use, searchable, copyable prompts with sample outputs (IT/EN)."/>
+<meta name="description" content="Libreria dei prompt del libro Intelligenza Aumentata di Emanuele Castagno / Prompt library for the book Augmented Intelligence by Emanuele Castagno: ready-to-use, searchable, copyable prompts with sample outputs (IT/EN)."/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary-color:#4DD0E1;--accent-color:#1DE9B6;--text-color:#FFFFFF;--text-light:#B0BEC5;--text-dark:#263238;--bg-color:#1A1B3A;--page-bg:#0F1419;--card-bg:#1E293B;--border-color:#37474F;--glow-cyan:0 0 20px rgba(77,208,225,.3);--glow-cyan-strong:0 0 30px rgba(77,208,225,.5);--elevation:0 8px 32px rgba(0,0,0,.3);--glass-bg:rgba(77,208,225,.1);--glass-border:rgba(77,208,225,.2)}
@@ -814,13 +814,13 @@ const PROMPTS=[
 ];
 const CHAPS=["Introduzione", "Cap. 2", "Cap. 3", "Cap. 5", "Cap. 6", "Cap. 7", "Cap. 9"];
 const UI={
- it:{intro:'<strong>Augmented Intelligence</strong> — di Emanuele Castagno. Tutti i prompt del libro: cerca, apri e copia. Alcuni includono un output di esempio.',
-  foot:'Libreria prompt del libro <strong>Augmented Intelligence</strong>. I prompt sono spunti da adattare al tuo contesto — verifica sempre gli output.',
-  search:'Cerca un prompt (titolo, scopo, testo)…',searchLbl:'Cerca',all:'Tutti',open:'▶ Clicca per aprire',out:'📄 Output di esempio',
+ it:{intro:'<strong>Intelligenza Aumentata</strong> — di Emanuele Castagno. Tutti i prompt del libro: cerca, apri e copia. Alcuni includono un output di esempio.',
+  foot:'Libreria prompt del libro <strong>Intelligenza Aumentata</strong>. I prompt sono spunti da adattare al tuo contesto — verifica sempre gli output.',
+  title:'Intelligenza Aumentata — Prompt Library',search:'Cerca un prompt (titolo, scopo, testo)…',searchLbl:'Cerca',all:'Tutti',open:'▶ Clicca per aprire',out:'📄 Output di esempio',
   copy:'Copia',copied:'Copiato ✓',soon:"Testo in arrivo — consulta l'output completo:",chap:c=>c},
  en:{intro:'<strong>Augmented Intelligence</strong> — by Emanuele Castagno. All the prompts from the book: search, open and copy. Some include a sample output.',
   foot:'Prompt library for the book <strong>Augmented Intelligence</strong>. The prompts are starting points to adapt to your context — always check the outputs.',
-  search:'Search for a prompt (title, purpose, text)…',searchLbl:'Search',all:'All',open:'▶ Click to open',out:'📄 Sample output',
+  title:'Augmented Intelligence — Prompt Library',search:'Search for a prompt (title, purpose, text)…',searchLbl:'Search',all:'All',open:'▶ Click to open',out:'📄 Sample output',
   copy:'Copy',copied:'Copied ✓',soon:'Text coming soon — see the full output:',chap:c=>c==='Introduzione'?'Introduction':c.replace('Cap. ','Chapter ')}
 };
 function pickLang(){
@@ -873,6 +873,7 @@ function drawFilters(){
 }
 function applyLang(){
  document.documentElement.lang=lang;
+ document.title=UI[lang].title;
  document.getElementById('intro').innerHTML=UI[lang].intro;
  document.getElementById('foot').innerHTML=UI[lang].foot;
  search.placeholder=UI[lang].search;search.setAttribute('aria-label',UI[lang].searchLbl);
