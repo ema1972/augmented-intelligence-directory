@@ -61,7 +61,7 @@ pre{white-space:pre-wrap;word-wrap:break-word;font-family:ui-monospace,SFMono-Re
   <div class="lang" role="group" aria-label="Lingua / Language"><button class="lbtn" data-lang="it" lang="it">IT</button><button class="lbtn" data-lang="en" lang="en">EN</button></div>
   <h1>Prompt Library</h1>
   <p id="intro"></p>
-  <a class="back" href="index.html">← AI Directory</a>
+  <a class="back" href="index.html">← Il libro</a>
  </header>
  <div class="controls">
   <input id="search" type="search" placeholder="" aria-label=""/>
@@ -817,11 +817,11 @@ const UI={
  it:{intro:'<strong>Intelligenza Aumentata</strong> — di Emanuele Castagno. Tutti i prompt del libro: cerca, apri e copia. Alcuni includono un output di esempio.',
   foot:'Libreria prompt del libro <strong>Intelligenza Aumentata</strong>. I prompt sono spunti da adattare al tuo contesto — verifica sempre gli output.',
   title:'Intelligenza Aumentata — Prompt Library',search:'Cerca un prompt (titolo, scopo, testo)…',searchLbl:'Cerca',all:'Tutti',open:'▶ Clicca per aprire',out:'📄 Output di esempio',
-  copy:'Copia',copied:'Copiato ✓',soon:"Testo in arrivo — consulta l'output completo:",chap:c=>c},
+  copy:'Copia',copied:'Copiato ✓',back:'← Il libro',soon:"Testo in arrivo — consulta l'output completo:",chap:c=>c},
  en:{intro:'<strong>Augmented Intelligence</strong> — by Emanuele Castagno. All the prompts from the book: search, open and copy. Some include a sample output.',
   foot:'Prompt library for the book <strong>Augmented Intelligence</strong>. The prompts are starting points to adapt to your context — always check the outputs.',
   title:'Augmented Intelligence — Prompt Library',search:'Search for a prompt (title, purpose, text)…',searchLbl:'Search',all:'All',open:'▶ Click to open',out:'📄 Sample output',
-  copy:'Copy',copied:'Copied ✓',soon:'Text coming soon — see the full output:',chap:c=>c==='Introduzione'?'Introduction':c.replace('Cap. ','Chapter ')}
+  copy:'Copy',copied:'Copied ✓',back:'← The book',soon:'Text coming soon — see the full output:',chap:c=>c==='Introduzione'?'Introduction':c.replace('Cap. ','Chapter ')}
 };
 function pickLang(){
  try{const q=new URLSearchParams(location.search).get('lang');if(q==='it'||q==='en')return q;}catch(e){}
@@ -876,6 +876,7 @@ function applyLang(){
  document.title=UI[lang].title;
  document.getElementById('intro').innerHTML=UI[lang].intro;
  document.getElementById('foot').innerHTML=UI[lang].foot;
+ document.querySelector('.back').textContent=UI[lang].back;
  search.placeholder=UI[lang].search;search.setAttribute('aria-label',UI[lang].searchLbl);
  document.querySelectorAll('.lbtn').forEach(b=>{b.classList.toggle('active',b.dataset.lang===lang);b.setAttribute('aria-pressed',b.dataset.lang===lang);});
  drawFilters();
