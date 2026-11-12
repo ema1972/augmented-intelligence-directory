@@ -26,27 +26,18 @@ body{margin:0} img{max-width:100%} [hidden]{display:none!important}
 </head>
 <body>
 <style>
-/* Layout: a white page like the new cover. The book turns inside slowly moving circuit rings;
-   the machine speaks in Exo 2 (titles, labels), the human in Newsreader (everything you read). */
+/* Layout A: the buy box sits in the first screen beside the cover; a short page of proof, objections and a sticky buy bar. */
 :root{
-  --paper:#ffffff;      /* the white of the 2nd-edition cover */
-  --mist:#edf4f3;       /* cool surface, biased toward the cover teal */
-  --ink:#0f1b1d;        /* text, a shade of the cover's black with teal in it */
-  --ink-soft:#4a5a5e;   /* secondary text */
-  --steel:#8597a0;      /* the grey of the circuit lines on the cover */
-  --teal:#2ec4b6;       /* "AUMENTATA" on the cover: display and rings only */
-  --teal-ink:#0a7a72;   /* accessible teal for text and buttons on white */
-  --line:#d6e2e1;
-  --on-teal:#ffffff;
-  --shadow:rgba(15,40,42,.22);
+  --paper:#ffffff; --mist:#edf4f3; --ink:#0f1b1d; --ink-soft:#4a5a5e; --steel:#8597a0;
+  --teal:#2ec4b6; --teal-ink:#0a7a72; --line:#d6e2e1; --on-teal:#ffffff; --shadow:rgba(15,40,42,.22);
   --display:"Exo 2","Avenir Next","Segoe UI",system-ui,sans-serif;
   --text:"Newsreader","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --step--1:clamp(.82rem,.79rem + .15vw,.9rem);
   --step-0:clamp(1.06rem,1rem + .3vw,1.2rem);
   --step-1:clamp(1.3rem,1.2rem + .5vw,1.55rem);
   --step-2:clamp(1.7rem,1.45rem + 1.2vw,2.4rem);
-  --step-3:clamp(2.6rem,1.9rem + 3.6vw,5.4rem);
-  --wrap:1180px;
+  --step-3:clamp(2.2rem,1.7rem + 2.6vw,4rem);
+  --wrap:1120px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -60,100 +51,74 @@ body{margin:0} img{max-width:100%} [hidden]{display:none!important}
   --teal:#3fd3c6; --teal-ink:#5fdcd1; --line:#1d3236; --on-teal:#061113; --shadow:rgba(0,0,0,.55);
   color-scheme:dark;
 }
-
 *{box-sizing:border-box}
+[hidden]{display:none!important} img{max-width:100%}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{
-  margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--text); font-size:var(--step-0); line-height:1.6;
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--text); font-size:var(--step-0); line-height:1.6; -webkit-font-smoothing:antialiased}
 a{color:var(--teal-ink); text-underline-offset:.18em; text-decoration-thickness:1px}
-a:hover{text-decoration-thickness:2px}
 :focus-visible{outline:2px solid var(--teal-ink); outline-offset:3px; border-radius:4px}
-h1,h2,h3{font-family:var(--display); font-weight:400; line-height:1.08; margin:0; text-wrap:balance; letter-spacing:-.01em}
-h2{font-size:var(--step-2)}
-h3{font-size:var(--step-1); font-weight:500}
-p{margin:0}
+h1,h2,h3{font-family:var(--display); font-weight:400; line-height:1.1; margin:0; text-wrap:balance; letter-spacing:-.01em}
+h2{font-size:var(--step-2)} h3{font-size:var(--step-1); font-weight:500}
+p,ul,ol{margin:0} ul,ol{padding:0; list-style:none}
 .wrap{max-width:var(--wrap); margin:0 auto; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
-.measure{max-width:62ch}
-
-/* The cover's own lettering: wide-spaced caps, used only where the cover uses it */
-.spaced{font-family:var(--display); font-weight:500; text-transform:uppercase; letter-spacing:.32em; font-size:var(--step--1); color:var(--teal-ink)}
-
-/* Header */
-.top{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:22px; flex-wrap:wrap}
-.top nav{display:flex; gap:22px; flex-wrap:wrap; font-family:var(--display); font-size:.95rem}
-.top nav a{color:var(--ink-soft); text-decoration:none}
-.top nav a:hover{color:var(--ink)}
+.soft{color:var(--ink-soft)}
+.spaced{font-family:var(--display); font-weight:500; text-transform:uppercase; letter-spacing:.28em; font-size:var(--step--1); color:var(--teal-ink)}
 .lang{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px}
 .lang button{font:500 .8rem/1 var(--display); letter-spacing:.08em; border:0; background:transparent; color:var(--ink-soft); padding:7px 11px; border-radius:999px; cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
-@media (max-width:820px){ .top nav{display:none} }
-
-/* Hero */
-.hero{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); align-items:center; gap:clamp(24px,4vw,64px); padding-block:clamp(16px,3vw,40px) clamp(40px,6vw,88px)}
-.hero-copy{display:grid; gap:22px; min-width:0}
-.title{font-size:var(--step-3); font-weight:300; letter-spacing:-.02em; line-height:.95; text-transform:uppercase}
-.title span{display:block}
-.title .aug{color:var(--teal)}
-.subtitle{font-family:var(--text); font-style:italic; font-size:var(--step-1); color:var(--ink); line-height:1.35}
-.lead{color:var(--ink-soft); max-width:52ch}
-.status{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; font-family:var(--display); font-size:1rem}
-.status strong{font-weight:600}
-.status .days{font-variant-numeric:tabular-nums; color:var(--teal-ink)}
-.actions{display:flex; gap:12px; flex-wrap:wrap}
-.btn{display:inline-flex; align-items:center; gap:10px; font:500 1rem/1 var(--display); letter-spacing:.01em; padding:15px 22px; border-radius:999px; text-decoration:none; border:1px solid transparent; cursor:pointer; transition:transform .15s ease, background-color .15s ease}
-.btn:active{transform:translateY(1px)}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; font:500 1.02rem/1.15 var(--display); padding:16px 24px; border-radius:999px; text-decoration:none; border:1px solid transparent; cursor:pointer; text-align:center}
 .btn-primary{background:var(--teal-ink); color:var(--on-teal)}
 .btn-primary:hover{background:var(--ink); color:var(--paper)}
-.btn-ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+.btn-ghost{background:transparent; color:var(--ink); border-color:var(--steel)}
 .btn-ghost:hover{border-color:var(--ink)}
-.btn svg{width:16px; height:16px; flex:none}
+.btn-wait{background:transparent; color:var(--ink-soft); border:1px dashed var(--steel); cursor:default}
+.btn small{font-weight:400; opacity:.85}
+.status{font-family:var(--display); font-size:1rem; display:flex; gap:10px; flex-wrap:wrap; align-items:baseline}
+.status strong{font-weight:600} .status .days{color:var(--teal-ink)}
+.offer{font-family:var(--display); font-size:1rem; color:var(--ink-soft)}
+.offer strong{color:var(--teal-ink); font-weight:600}
+section.block{padding-block:clamp(48px,7vw,96px)}
+.head{display:grid; gap:12px; margin-bottom:clamp(24px,3.5vw,40px); max-width:60ch}
+.head p{color:var(--ink-soft)}
+.player{background:var(--ink); color:var(--paper); border-radius:12px; padding:clamp(18px,3vw,28px); display:grid; gap:16px; min-width:0}
+.player .meta{display:grid; gap:4px; font-family:var(--display)}
+.player .meta b{font-weight:500; font-size:1.08rem}
+.player .meta span{opacity:.72; font-size:.92rem}
+.controls{display:flex; align-items:center; gap:16px}
+.play{width:56px; height:56px; border-radius:50%; border:0; background:var(--teal); color:var(--ink); display:grid; place-items:center; cursor:pointer; flex:none}
+.play svg{width:22px; height:22px}
+.track{flex:1; min-width:0; height:8px; border-radius:99px; background:color-mix(in srgb, var(--paper) 22%, transparent); cursor:pointer; overflow:hidden}
+.track i{display:block; height:100%; width:0; background:var(--teal)}
+.time{font:500 .9rem/1 var(--display); font-variant-numeric:tabular-nums; opacity:.8; min-width:7.5ch; text-align:right}
+.toc{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 clamp(24px,4vw,56px); counter-reset:ch}
+.toc li{display:grid; grid-template-columns:3ch minmax(0,1fr) auto; align-items:baseline; gap:12px; padding-block:12px; border-top:1px solid var(--line)}
+.toc li::before{counter-increment:ch; content:counter(ch); font-family:var(--display); font-variant-numeric:tabular-nums; color:var(--steel)}
+.toc .new{font:600 .72rem/1 var(--display); letter-spacing:.1em; text-transform:uppercase; color:var(--teal-ink); border:1px solid currentColor; border-radius:999px; padding:5px 8px}
+.toc li.is-new .t{font-weight:500}
+@media (max-width:760px){ .toc{grid-template-columns:minmax(0,1fr)} }
+.author{display:grid; grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr); gap:clamp(20px,5vw,64px); border-top:1px solid var(--line); padding-top:clamp(32px,5vw,56px)}
+.author p{max-width:62ch}
+.author .links{margin-top:16px; font-family:var(--display)}
+@media (max-width:760px){ .author{grid-template-columns:minmax(0,1fr)} }
+footer{padding-block:32px 48px; color:var(--ink-soft); font-family:var(--display); font-size:.9rem}
 
-/* The book in its rings */
-.stage{position:relative; aspect-ratio:1/1; width:100%; max-width:600px; justify-self:center}
+.top{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:20px; flex-wrap:wrap}
+.top nav{display:flex; gap:22px; flex-wrap:wrap; font-family:var(--display); font-size:.95rem}
+.top nav a{color:var(--ink-soft); text-decoration:none}
+.top nav a:hover{color:var(--ink)}
+@media (max-width:860px){ .top nav{display:none} }
+.hero{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(20px,3vw,36px) clamp(24px,5vw,72px); align-items:center; padding-block:clamp(8px,2vw,24px) clamp(40px,6vw,72px)}
+.stage{position:relative; aspect-ratio:1/1; width:100%; max-width:460px; justify-self:center}
 .stage canvas{position:absolute; inset:0; width:100%; height:100%}
 .book-wrap{position:absolute; inset:0; display:grid; place-items:center; perspective:1600px}
 .book{position:relative; width:46%; aspect-ratio:800/1280; transform:rotateY(-24deg) rotateX(5deg); transform-style:preserve-3d; transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .stage:hover .book{transform:rotateY(-12deg) rotateX(3deg)}
 .book img{position:absolute; inset:0; width:100%; height:100%; display:block; border-radius:2px 6px 6px 2px; box-shadow:inset 4px 0 6px rgba(0,0,0,.12)}
-.book::before{ /* spine */
-  content:""; position:absolute; top:0; left:0; width:22px; height:100%;
-  transform-origin:left center; transform:rotateY(90deg) translateX(-22px);
-  background:linear-gradient(90deg,#d9e3e2,#f7fafa 40%,#cfdcdb);
-}
-.book::after{ /* page block */
-  content:""; position:absolute; top:3px; right:0; width:20px; height:calc(100% - 6px);
-  transform-origin:right center; transform:rotateY(-90deg);
-  background:repeating-linear-gradient(90deg,#f4f1ea 0 2px,#e6e1d6 2px 3px);
-}
-.shadow{position:absolute; left:50%; bottom:13%; width:40%; height:22px; transform:translateX(-46%); background:radial-gradient(closest-side,var(--shadow),transparent); filter:blur(6px)}
+.book::before{content:""; position:absolute; top:0; left:0; width:22px; height:100%; transform-origin:left center; transform:rotateY(90deg) translateX(-22px); background:linear-gradient(90deg,#d9e3e2,#f7fafa 40%,#cfdcdb)}
+.book::after{content:""; position:absolute; top:3px; right:0; width:20px; height:calc(100% - 6px); transform-origin:right center; transform:rotateY(-90deg); background:repeating-linear-gradient(90deg,#f4f1ea 0 2px,#e6e1d6 2px 3px)}
+.bshadow{position:absolute; left:50%; bottom:13%; width:40%; height:22px; transform:translateX(-46%); background:radial-gradient(closest-side,var(--shadow),transparent); filter:blur(6px)}
 @media (prefers-reduced-motion: reduce){ .book{transition:none} }
-
-/* Thesis */
-.thesis{background:var(--mist); padding-block:clamp(48px,7vw,96px)}
-.thesis blockquote{margin:0; font-family:var(--text); font-size:var(--step-2); line-height:1.25; max-width:24ch}
-.thesis blockquote span{display:block}
-.thesis blockquote span + span{color:var(--teal-ink)}
-.thesis .row{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:clamp(24px,5vw,72px); align-items:end}
-.thesis p{color:var(--ink-soft); max-width:46ch}
-
-section.block{padding-block:clamp(56px,8vw,112px)}
-.head{display:grid; gap:14px; margin-bottom:clamp(28px,4vw,48px); max-width:62ch}
-.head p{color:var(--ink-soft)}
-
-/* Table of contents: a real sequence, so it is numbered */
-.toc{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 clamp(24px,4vw,56px); list-style:none; margin:0; padding:0; counter-reset:ch}
-.toc li{display:grid; grid-template-columns:3.2ch minmax(0,1fr) auto; align-items:baseline; gap:12px; padding-block:14px; border-top:1px solid var(--line)}
-.toc li::before{counter-increment:ch; content:counter(ch); font-family:var(--display); font-variant-numeric:tabular-nums; color:var(--steel); font-size:1rem}
-.toc .t{min-width:0}
-.toc .new{font:600 .72rem/1 var(--display); letter-spacing:.12em; text-transform:uppercase; color:var(--teal-ink); border:1px solid currentColor; border-radius:999px; padding:5px 8px; white-space:nowrap}
-.toc li.is-new .t{font-weight:500}
-@media (max-width:760px){ .toc{grid-template-columns:minmax(0,1fr)} }
-
-/* Before and after */
 .compare{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,2.2fr); gap:clamp(24px,4vw,56px); align-items:start}
 .covers{display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:end}
 .covers figure{margin:0; display:grid; gap:10px}
@@ -166,47 +131,67 @@ section.block{padding-block:clamp(56px,8vw,112px)}
 .ba th,.ba td{text-align:left; vertical-align:top; padding:16px 14px 16px 0; border-top:1px solid var(--line)}
 .ba thead th{font:500 .9rem/1.2 var(--display); color:var(--ink-soft); border-top:0; padding-top:0}
 .ba tbody th{font:500 1rem/1.3 var(--display); width:22%}
-.ba td.then{color:var(--ink-soft); width:36%}
-.ba td.now{width:42%}
+.ba td.then{color:var(--ink-soft); width:36%} .ba td.now{width:42%}
 .scroll-x{overflow-x:auto}
 @media (max-width:900px){ .compare{grid-template-columns:minmax(0,1fr)} .covers{max-width:420px} }
-
-/* Formats */
-.formats{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden}
-.fmt{background:var(--paper); padding:24px 20px; display:grid; grid-template-rows:auto 1fr auto; gap:12px; min-width:0}
-.fmt h3{font-size:1.15rem}
-.fmt p{color:var(--ink-soft); font-size:1rem; line-height:1.45}
-.fmt .go{font:500 .95rem/1.2 var(--display); display:inline-flex; gap:8px; align-items:center; text-decoration:none; padding:11px 14px; border-radius:999px; background:var(--mist); color:var(--ink); justify-self:start}
-.fmt a.go:hover{background:var(--teal-ink); color:var(--on-teal)}
-.fmt span.go{color:var(--ink-soft); background:transparent; border:1px dashed var(--line)}
-.offer{margin-top:18px; font-family:var(--display); font-size:1rem; color:var(--ink-soft)}
-.offer strong{color:var(--teal-ink); font-weight:600}
-@media (max-width:1040px){ .formats{grid-template-columns:repeat(2,minmax(0,1fr))} .fmt:last-child{grid-column:1/-1} }
-@media (max-width:520px){ .formats{grid-template-columns:minmax(0,1fr)} }
-
-/* Audiobook player */
-.listen{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:clamp(24px,5vw,72px); align-items:center}
-.player{background:var(--ink); color:var(--paper); border-radius:10px; padding:clamp(20px,3vw,32px); display:grid; gap:18px}
-.player .meta{display:grid; gap:4px; font-family:var(--display)}
-.player .meta b{font-weight:500; font-size:1.1rem}
-.player .meta span{opacity:.72; font-size:.92rem}
-.controls{display:flex; align-items:center; gap:16px}
-.play{width:56px; height:56px; border-radius:50%; border:0; background:var(--teal); color:var(--ink); display:grid; place-items:center; cursor:pointer; flex:none}
-.play svg{width:22px; height:22px}
-.wave{flex:1; min-width:0; height:56px; cursor:pointer}
-.time{font:500 .9rem/1 var(--display); font-variant-numeric:tabular-nums; opacity:.8; min-width:7.5ch; text-align:right}
-.note{font-size:.95rem; color:var(--ink-soft)}
-
-/* Gift chapter */
-.gift{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:clamp(24px,5vw,72px); align-items:center; background:var(--mist); border-radius:10px; padding:clamp(24px,4vw,56px)}
-.gift .dl{display:grid; gap:12px}
-.dl-item{display:flex; justify-content:space-between; align-items:center; gap:14px; padding:16px 18px; border-radius:8px; background:var(--paper); border:1px solid var(--line); flex-wrap:wrap}
-.dl-item b{font:500 1.05rem/1.2 var(--display)}
-.dl-item small{display:block; color:var(--ink-soft); font-size:.92rem}
-.dl-item .when{font:500 .9rem/1 var(--display); color:var(--ink-soft); border:1px dashed var(--line); border-radius:999px; padding:9px 12px}
-@media (max-width:860px){ .gift,.listen,.thesis .row{grid-template-columns:minmax(0,1fr)} }
-
-/* Prompt library */
+.copy{display:grid; gap:18px; min-width:0}
+.title{font-size:var(--step-3); font-weight:300; text-transform:uppercase; letter-spacing:-.015em; line-height:.98}
+.title span{display:block} .title .aug{color:var(--teal)}
+.subtitle{font-style:italic; font-size:var(--step-1); line-height:1.35}
+.gets{display:grid; gap:10px}
+.gets li{display:grid; grid-template-columns:22px minmax(0,1fr); gap:10px; align-items:start}
+.gets svg{width:20px; height:20px; margin-top:.3em; color:var(--teal-ink)}
+.buybox{grid-column:1/-1; border:1.5px solid var(--ink); border-radius:14px; padding:clamp(16px,2.5vw,24px); display:grid; gap:16px; scroll-margin-top:16px}
+.tabs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; background:var(--mist); border-radius:999px; padding:4px}
+.tabs button{font:500 .95rem/1.1 var(--display); border:0; background:transparent; color:var(--ink-soft); padding:11px 8px; border-radius:999px; cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--paper); color:var(--ink); box-shadow:0 1px 3px var(--shadow)}
+.panel{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:12px clamp(16px,3vw,40px); align-items:center}
+.panel .txt{display:grid; gap:6px}
+.panel .row{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px}
+.panel .hint{font-size:.98rem; color:var(--ink-soft); line-height:1.45}
+@media (max-width:520px){ .panel .row{grid-template-columns:minmax(0,1fr)} }
+.facts{background:var(--mist)}
+.facts .wrap{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,3vw,40px); padding-block:28px}
+.facts div{display:grid; gap:2px}
+.facts b{font:400 var(--step-2)/1 var(--display); font-variant-numeric:tabular-nums}
+.facts span{font-family:var(--display); font-size:.95rem; color:var(--ink-soft); line-height:1.3}
+@media (max-width:700px){ .facts .wrap{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.out{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 clamp(24px,4vw,56px)}
+.out li{padding-block:18px; border-top:1px solid var(--line); display:grid; gap:4px}
+.out b{font:500 1.15rem/1.3 var(--display)}
+.out small{font-family:var(--display); font-size:.88rem; color:var(--teal-ink)}
+.out span{color:var(--ink-soft)}
+@media (max-width:760px){ .out{grid-template-columns:minmax(0,1fr)} }
+.split{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:clamp(24px,5vw,72px); align-items:center}
+@media (max-width:860px){ .hero,.split{grid-template-columns:minmax(0,1fr)} .stage{max-width:300px} .panel{grid-template-columns:minmax(0,1fr)} }
+.faq{max-width:760px; display:grid}
+.faq details{border-top:1px solid var(--line); padding-block:16px}
+.faq summary{font:500 1.12rem/1.35 var(--display); cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; color:var(--teal-ink); font-weight:400; font-size:1.3rem; line-height:1}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{margin-top:10px; color:var(--ink-soft); max-width:62ch}
+.final{background:var(--mist); border-radius:14px; padding:clamp(24px,4vw,56px); display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:clamp(20px,4vw,56px); align-items:center}
+.final .stack{display:grid; gap:10px}
+@media (max-width:760px){ .final{grid-template-columns:minmax(0,1fr)} }
+.sticky{position:fixed; left:0; right:0; bottom:0; z-index:20; background:var(--paper); border-top:1px solid var(--line); box-shadow:0 -10px 30px -18px var(--shadow);
+  padding-top:10px; padding-bottom:calc(10px + env(safe-area-inset-bottom, 0px)); transform:translateY(110%); transition:transform .25s ease}
+.sticky.on{transform:none}
+.sticky .wrap{display:flex; align-items:center; gap:14px; justify-content:space-between}
+.sticky .who{display:flex; align-items:center; gap:12px; min-width:0}
+.sticky img{width:34px; height:auto; flex:none; border-radius:2px}
+.sticky .who div{min-width:0; font-family:var(--display); line-height:1.25}
+.sticky .who b{font-weight:500; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.sticky .who span{font-size:.86rem; color:var(--ink-soft)}
+.sticky .btn{padding:13px 20px; flex:none}
+@media (prefers-reduced-motion: reduce){ .sticky{transition:none} }
+body{padding-bottom:84px}
+section.block{scroll-margin-top:8px}
+.gift{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:clamp(24px,5vw,72px); align-items:center; background:var(--mist); border-radius:14px; padding:clamp(24px,4vw,56px)}
+.dl{display:grid; gap:12px}
+.dl-item{display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; padding:16px 18px; border-radius:8px; background:var(--paper); border:1px solid var(--line)}
+.dl-item b{font:500 1.05rem/1.2 var(--display)} .dl-item small{display:block; color:var(--ink-soft); font-size:.92rem}
+.dl-item .when{font:500 .9rem/1 var(--display); color:var(--ink-soft); border:1px dashed var(--steel); border-radius:999px; padding:9px 12px}
 .prompts{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(24px,5vw,72px); align-items:start}
 .bars{display:grid; gap:10px; margin-block:26px 28px}
 .bar{display:grid; grid-template-columns:8.5ch minmax(0,1fr) 3ch; align-items:center; gap:12px; font-family:var(--display); font-size:.92rem; color:var(--ink-soft)}
@@ -216,80 +201,51 @@ section.block{padding-block:clamp(56px,8vw,112px)}
 .try header{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 18px; background:var(--mist); flex-wrap:wrap}
 .try header b{font:500 1rem/1.3 var(--display)}
 .try header small{display:block; color:var(--ink-soft); font-family:var(--display); font-size:.82rem}
-.try pre{margin:0; padding:18px; white-space:pre-wrap; font-family:var(--text); font-size:1.02rem; line-height:1.55; max-height:280px; overflow:auto}
-.copy{font:500 .9rem/1 var(--display); border:1px solid var(--line); background:var(--paper); color:var(--ink); padding:10px 14px; border-radius:999px; cursor:pointer}
-.copy:hover{border-color:var(--ink)}
-
-/* Author */
-.author{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(24px,5vw,72px); align-items:start; border-top:1px solid var(--line); padding-top:clamp(40px,6vw,72px)}
-.author .links{display:flex; gap:18px; flex-wrap:wrap; margin-top:20px; font-family:var(--display)}
-@media (max-width:860px){ .author,.prompts{grid-template-columns:minmax(0,1fr)} }
-
-footer{padding-block:40px 56px; color:var(--ink-soft); font-family:var(--display); font-size:.9rem}
-footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:24px}
-
-@media (max-width:860px){
-  .hero{grid-template-columns:minmax(0,1fr)}
-  .stage{order:-1; max-width:440px}
-}
+.try pre{margin:0; padding:18px; white-space:pre-wrap; overflow-wrap:anywhere; font-family:var(--text); font-size:1.02rem; line-height:1.55; max-height:280px; overflow:auto}
+.copy-btn{font:500 .9rem/1 var(--display); border:1px solid var(--steel); background:var(--paper); color:var(--ink); padding:10px 14px; border-radius:999px; cursor:pointer}
+.copy-btn:hover{border-color:var(--ink)}
+@media (max-width:860px){ .gift,.prompts{grid-template-columns:minmax(0,1fr)} }
 </style>
 
-<div class="wrap top">
-  <span class="spaced">Emanuele Castagno</span>
+<div class="wrap top"><span class="spaced">Emanuele Castagno</span>
   <nav aria-label="Sezioni">
-    <a href="#libro" data-i18n="nav_book">Il libro</a>
-    <a href="#formati" data-i18n="nav_formats">Formati</a>
-    <a href="#audiolibro" data-i18n="nav_audio">Audiolibro</a>
-    <a href="#regalo" data-i18n="nav_gift">Capitolo regalo</a>
-    <a href="#prompt" data-i18n="nav_prompts">Prompt</a>
-  </nav>
-  <div class="lang" role="group" aria-label="Lingua / Language">
+    <a href="#libro" data-i18n="nav_book"></a><a href="#buybox" data-i18n="nav_formats"></a><a href="#audiolibro" data-i18n="nav_audio"></a><a href="#regalo" data-i18n="nav_gift"></a><a href="#prompt" data-i18n="nav_prompts"></a>
+  </nav><div class="lang" role="group" aria-label="Lingua / Language">
     <button type="button" id="lang-it" data-lang="it" aria-pressed="true">IT</button>
     <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
-  </div>
-</div>
-
+  </div></div>
 <main>
   <div class="wrap hero">
-    <div class="hero-copy">
-      <h1 class="title" id="title"><span>Intelligenza</span><span class="aug">Aumentata</span></h1>
-      <p class="subtitle" data-i18n="subtitle">Come l'AI potenzia le tue capacità e il tuo successo</p>
-      <p class="spaced" data-i18n="edition">Seconda edizione, aggiornata e ampliata</p>
-      <p class="lead" data-i18n="lead">Un manuale pratico, scritto da un manager che usa l'AI ogni giorno: prompt pronti all'uso, casi aziendali reali e gli strumenti del 2026. Con quattro capitoli nuovi su vibe coding, Physical AI, fiducia nell'AI e ciò che ci rende umani.</p>
-      <p class="status" id="status" aria-live="polite"></p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#formati" data-i18n="cta_formats">Scegli il formato</a>
-        <a class="btn btn-ghost" href="#audiolibro">
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
-          <span data-i18n="cta_listen">Ascolta un estratto</span>
-        </a>
-      </div>
-    </div>
     <div class="stage" id="stage">
       <canvas id="rings" aria-hidden="true"></canvas>
-      <div class="shadow" aria-hidden="true"></div>
-      <div class="book-wrap">
-        <div class="book"><img id="cover" src="assets/cover-it.jpg" alt="Copertina di Intelligenza Aumentata, seconda edizione" width="800" height="1280"></div>
-      </div>
+      <div class="bshadow" aria-hidden="true"></div>
+      <div class="book-wrap"><div class="book"><img data-cover src="assets/cover-it.jpg" alt="" width="800" height="1280"></div></div>
+    </div>
+    <div class="copy">
+      <p class="spaced" data-i18n="edition"></p>
+      <h1 class="title" id="title"></h1>
+      <p class="subtitle" data-i18n="subtitle"></p>
+      <ul class="gets" id="gets"></ul>
+      <p class="status" data-status></p>
+    </div>
+    <div class="buybox" id="buybox">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="panel" id="panel"></div>
     </div>
   </div>
 
-  <div class="thesis">
-    <div class="wrap row">
-      <blockquote>
-        <span data-i18n="thesis_a">L'AI non sostituisce la competenza.</span>
-        <span data-i18n="thesis_b">La amplifica.</span>
-      </blockquote>
-      <p data-i18n="thesis_p">È l'idea che tiene insieme il libro. Non teoria: il metodo che uso ogni giorno con l'AI, dalla prima email del mattino ai progetti più complessi, pronto da applicare al tuo lavoro.</p>
-    </div>
-  </div>
+  <div class="facts"><div class="wrap" id="facts"></div></div>
 
-  <section class="block" id="libro">
+  <section class="block">
     <div class="wrap">
-      <div class="head">
-        <h2 data-i18n="toc_h">Cosa c'è dentro</h2>
-        <p data-i18n="toc_p">Dodici capitoli, dall'uso quotidiano dell'AI agli agenti, ai robot e alle regole. I quattro capitoli segnati sono nuovi in questa edizione.</p>
-      </div>
+      <div class="head"><h2 data-i18n="out_h"></h2><p data-i18n="out_p"></p></div>
+      <ul class="out" id="out"></ul>
+    </div>
+  </section>
+
+  <section class="block" id="libro" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><h2 data-i18n="toc_h"></h2><p data-i18n="toc_p"></p></div>
       <ol class="toc" id="toc"></ol>
     </div>
   </section>
@@ -297,331 +253,287 @@ footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wr
   <section class="block" style="padding-top:0">
     <div class="wrap compare">
       <div class="covers">
-        <figure>
-          <img src="assets/first-edition.jpg" alt="" width="520" height="820" loading="lazy">
-          <figcaption><b data-i18n="first_ed">Prima edizione</b><span data-i18n="first_date">luglio 2025</span></figcaption>
-        </figure>
-        <figure>
-          <div class="second"><img id="cover-small" src="assets/cover-it.jpg" alt="" width="800" height="1280" loading="lazy"></div>
-          <figcaption><b data-i18n="second_ed">Seconda edizione</b><span data-i18n="second_date">novembre 2026</span></figcaption>
-        </figure>
+        <figure><img src="assets/first-edition.jpg" alt="" width="520" height="820" loading="lazy"><figcaption><b data-i18n="first_ed"></b><span data-i18n="first_date"></span></figcaption></figure>
+        <figure><div class="second"><img data-cover src="assets/cover-it.jpg" alt="" width="800" height="1280" loading="lazy"></div><figcaption><b data-i18n="second_ed"></b><span data-i18n="second_date"></span></figcaption></figure>
       </div>
       <div>
-        <div class="head">
-          <h2 data-i18n="ba_h">Stesso libro, quindici mesi dopo</h2>
-          <p data-i18n="ba_p">La prima edizione l'ho scritta insieme a cinque sistemi di AI. Per la seconda l'AI ha fatto molto di più che aiutarmi a scrivere.</p>
-        </div>
-        <div class="scroll-x">
-          <table class="ba">
-            <thead><tr><th></th><th data-i18n="ba_then">Prima edizione</th><th data-i18n="ba_now">Seconda edizione</th></tr></thead>
-            <tbody>
-              <tr><th scope="row" data-i18n="ba_r1">Correzione e tipografia</th><td class="then" data-i18n="ba_r1a">L'AI mi aiutava poco a trovare gli errori e a sistemare la tipografia.</td><td class="now" data-i18n="ba_r1b">Più modelli di frontiera, usati insieme, hanno trovato gli errori e gestito l'impaginazione in Word.</td></tr>
-              <tr><th scope="row" data-i18n="ba_r2">Ebook Kindle e Apple</th><td class="then" data-i18n="ba_r2a">Quasi 400 pagine sistemate a mano, una per una.</td><td class="now" data-i18n="ba_r2b">Centinaia di prove di impaginazione automatiche, fatte dai miei agenti AI.</td></tr>
-              <tr><th scope="row" data-i18n="ba_r3">Audiolibro</th><td class="then" data-i18n="ba_r3a">Non c'era: troppo complesso e troppo costoso.</td><td class="now" data-i18n="ba_r3b">In italiano e in inglese, letto da una voce AI.</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <div class="head"><h2 data-i18n="ba_h"></h2><p data-i18n="ba_p"></p></div>
+        <div class="scroll-x"><table class="ba">
+          <thead><tr><th></th><th data-i18n="ba_then"></th><th data-i18n="ba_now"></th></tr></thead>
+          <tbody>
+            <tr><th scope="row" data-i18n="ba_r1"></th><td class="then" data-i18n="ba_r1a"></td><td class="now" data-i18n="ba_r1b"></td></tr>
+            <tr><th scope="row" data-i18n="ba_r2"></th><td class="then" data-i18n="ba_r2a"></td><td class="now" data-i18n="ba_r2b"></td></tr>
+            <tr><th scope="row" data-i18n="ba_r3"></th><td class="then" data-i18n="ba_r3a"></td><td class="now" data-i18n="ba_r3b"></td></tr>
+          </tbody>
+        </table></div>
       </div>
-    </div>
-  </section>
-
-  <section class="block" id="formati" style="padding-top:0">
-    <div class="wrap">
-      <div class="head">
-        <h2 data-i18n="fmt_h">Scegli come leggerlo</h2>
-        <p data-i18n="fmt_p">Cartaceo, ebook o audiolibro, in italiano e in inglese. Usa il selettore in alto per passare all'altra lingua.</p>
-      </div>
-      <div class="formats" id="formats"></div>
-      <p class="offer" id="offer"></p>
     </div>
   </section>
 
   <section class="block" id="audiolibro" style="padding-top:0">
-    <div class="wrap listen">
-      <div class="head" style="margin:0">
-        <h2 data-i18n="aud_h">Ascoltalo</h2>
-        <p data-i18n="aud_p">Per la prima volta il libro è anche un audiolibro, in italiano e in inglese, di circa otto ore e mezza. Lo legge una voce sintetica, e su ogni piattaforma è indicato.</p>
-        <p class="note" data-i18n="aud_note">L'estratto dura 75 secondi e viene dal capitolo 9.</p>
-      </div>
-      <div class="player" id="player">
-        <div class="meta"><b data-i18n="aud_track">Capitolo 9, Dal prompt al prodotto</b><span data-i18n="aud_voice">Voce: Alessio, voce AI</span></div>
+    <div class="wrap split">
+      <div class="head" style="margin:0"><h2 data-i18n="aud_h"></h2><p data-i18n="aud_p"></p></div>
+      <div class="player">
+        <div class="meta"><b data-i18n="aud_track"></b><span data-i18n="aud_voice"></span></div>
         <div class="controls">
-          <button class="play" id="play" type="button" aria-label="Riproduci l'estratto">
+          <button class="play" id="play" type="button">
             <svg id="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>
             <svg id="ico-pause" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z" fill="currentColor"/></svg>
           </button>
-          <canvas class="wave" id="wave" aria-hidden="true"></canvas>
+          <div class="track" id="track"><i id="prog"></i></div>
           <span class="time" id="time">0:00 / 1:15</span>
         </div>
-        <audio id="audio" preload="metadata" src="assets/sample-it.mp3"></audio>
+        <audio id="audio" preload="metadata"></audio>
       </div>
     </div>
   </section>
 
   <section class="block" id="regalo" style="padding-top:0">
-    <div class="wrap">
-      <div class="gift">
-        <div class="head" style="margin:0">
-          <h2 data-i18n="gift_h">Un capitolo in regalo</h2>
-          <p data-i18n="gift_p">Per il lancio regalo un capitolo intero. Lo scelgono con un sondaggio le persone che mi seguono su LinkedIn, e qui lo scarichi in PDF.</p>
-        </div>
-        <div class="dl" id="gift"></div>
-      </div>
-    </div>
+    <div class="wrap"><div class="gift">
+      <div class="head" style="margin:0"><h2 data-i18n="gift_h"></h2><p data-i18n="gift_p"></p></div>
+      <div class="dl" id="gift"></div>
+    </div></div>
   </section>
 
   <section class="block" id="prompt" style="padding-top:0">
     <div class="wrap prompts">
       <div>
-        <div class="head" style="margin:0">
-          <h2 data-i18n="pr_h">41 prompt pronti all'uso</h2>
-          <p data-i18n="pr_p">Tutti i prompt del libro, da cercare e copiare, con esempi di risultato. Nel libro c'è il QR code che porta alla libreria.</p>
-        </div>
+        <div class="head" style="margin:0"><h2 data-i18n="pr_h"></h2><p data-i18n="pr_p"></p></div>
         <div class="bars" id="bars"></div>
-        <a class="btn btn-primary" id="lib-link" href="prompts.html" data-i18n="pr_cta">Apri la libreria dei prompt</a>
+        <a class="btn btn-ghost" id="lib-link" href="prompts.html" data-i18n="pr_cta"></a>
       </div>
       <article class="try">
-        <header>
-          <div><b data-i18n="try_t">Prova subito: la tecnica Feynman</b><small data-i18n="try_s">IA-32, capitolo 6</small></div>
-          <button class="copy" id="copy" type="button" data-i18n="copy">Copia il prompt</button>
-        </header>
-        <pre id="try-text"></pre>
+        <header><div><b data-i18n="try_t"></b><small data-i18n="try_s"></small></div><button class="copy-btn" id="copy" type="button"></button></header>
+        <pre id="try-text" tabindex="0"></pre>
       </article>
     </div>
   </section>
 
   <section class="block" style="padding-top:0">
-    <div class="wrap author">
-      <h2 data-i18n="au_h">L'autore</h2>
-      <div>
-        <p class="measure" data-i18n="au_p">Emanuele Castagno è un ingegnere elettronico che programma da quando aveva dieci anni. Da trent'anni porta l'innovazione nelle aziende come fondatore, come CEO e oggi alla guida di una business unit internazionale nel settore della certificazione. È LinkedIn Top Voice per l'intelligenza artificiale.</p>
-        <div class="links" id="author-links"></div>
+    <div class="wrap">
+      <div class="head"><h2 data-i18n="faq_h"></h2></div>
+      <div class="faq" id="faq"></div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="final">
+        <div class="head" style="margin:0"><h2 data-i18n="fin_h"></h2><p data-i18n="fin_p"></p><p class="offer" data-offer></p></div>
+        <div class="stack" id="final-buy"></div>
       </div>
     </div>
   </section>
+  <section class="block" style="padding-top:0">
+    <div class="wrap author">
+      <h2 data-i18n="au_h"></h2>
+      <div><p data-i18n="au_p"></p><div class="links" id="author-links"></div></div>
+    </div>
+  </section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <span>© 2025-2026 Emanuele Castagno</span>
-  </div>
-</footer>
+<footer><div class="wrap"><span>© 2025-2026 Emanuele Castagno</span></div></footer>
+<div class="sticky" id="sticky"><div class="wrap">
+  <div class="who"><img data-cover src="assets/cover-it.jpg" alt="" width="800" height="1280"><div><b data-i18n="sticky_t"></b><span data-i18n="sticky_s"></span></div></div>
+  <span id="sticky-buy"></span>
+</div></div>
 
 <script>
 (function(){
-  /* Everything that changes at launch lives here. Replace null with the real link when it exists. */
   var CONFIG = {
-    launch: "2026-11-24",
-    ebookOfferEnd: "2026-12-06",
+    launch: "2026-11-24", ebookOfferEnd: "2026-12-06",
     links: {
       it: { paperback:null, hardcover:null, kindle:"https://www.amazon.it/dp/B0HQJ1VCR7", apple:"https://books.apple.com/it/book/intelligenza-aumentata/id6747316004", audiobook:null },
       en: { paperback:null, hardcover:null, kindle:"https://www.amazon.it/dp/B0HQJ87VQK", apple:"https://books.apple.com/it/book/augmented-intelligence/id6748159328", audiobook:null }
     },
     gift: { it:null, en:null },
-    linkedin: "https://www.linkedin.com/in/emanuelecastagno/"
+    linkedin: "https://www.linkedin.com/in/emanuelecastagno/",
+    library: "https://castagno.biz/prompts.html"
   };
-
-  var T = {
-    it: {
-      nav_book:"Il libro", nav_formats:"Formati", nav_audio:"Audiolibro", nav_gift:"Capitolo regalo", nav_prompts:"Prompt",
-      title:["Intelligenza","Aumentata"],
-      subtitle:"Come l'AI potenzia le tue capacità e il tuo successo",
-      edition:"Seconda edizione, aggiornata e ampliata",
-      lead:"Un manuale pratico, scritto da un manager che usa l'AI ogni giorno: prompt pronti all'uso, casi aziendali reali e gli strumenti del 2026. Con quattro capitoli nuovi su vibe coding, Physical AI, fiducia nell'AI e ciò che ci rende umani.",
-      cta_formats:"Scegli il formato", cta_listen:"Ascolta un estratto",
-      before:"Esce martedì 24 novembre 2026", days:function(n){return n===1?"domani":"tra "+n+" giorni"}, today:"Esce oggi", after:"Disponibile in cartaceo, ebook e audiolibro",
-      thesis_a:"L'AI non sostituisce la competenza.", thesis_b:"La amplifica.",
-      thesis_p:"È l'idea che tiene insieme il libro. Non teoria: il metodo che uso ogni giorno con l'AI, dalla prima email del mattino ai progetti più complessi, pronto da applicare al tuo lavoro.",
-      toc_h:"Cosa c'è dentro",
-      toc_p:"Dodici capitoli, dall'uso quotidiano dell'AI agli agenti, ai robot e alle regole. I quattro capitoli segnati sono nuovi in questa edizione.",
-      toc:["La grande trasformazione dell'AI","Come comunicare con l'AI generativa","Comunicazione efficiente nell'era AI","L'AI per l'ottimizzazione operativa","Generazione di contenuti","L'AI come coach personale","Riprogettare la tua carriera nell'era dell'AI","Il prossimo livello dell'AI","Dal prompt al prodotto","Physical AI","La fiducia come infrastruttura","Intelligenza aumentata e ciò che ci rende umani"],
-      new_tag:"Nuovo",
-      first_ed:"Prima edizione", first_date:"luglio 2025", second_ed:"Seconda edizione", second_date:"novembre 2026",
-      ba_h:"Stesso libro, quindici mesi dopo",
-      ba_p:"La prima edizione l'ho scritta insieme a cinque sistemi di AI. Per la seconda l'AI ha fatto molto di più che aiutarmi a scrivere.",
-      ba_then:"Prima edizione", ba_now:"Seconda edizione",
-      ba_r1:"Correzione e tipografia", ba_r1a:"L'AI mi aiutava poco a trovare gli errori e a sistemare la tipografia.", ba_r1b:"Più modelli di frontiera, usati insieme, hanno trovato gli errori e gestito l'impaginazione in Word.",
-      ba_r2:"Ebook Kindle e Apple", ba_r2a:"Quasi 400 pagine sistemate a mano, una per una.", ba_r2b:"Centinaia di prove di impaginazione automatiche, fatte dai miei agenti AI.",
-      ba_r3:"Audiolibro", ba_r3a:"Non c'era: troppo complesso e troppo costoso.", ba_r3b:"In italiano e in inglese, letto da una voce AI.",
-      fmt_h:"Scegli come leggerlo",
-      fmt_p:"Cartaceo, ebook o audiolibro, in italiano e in inglese. Usa il selettore in alto per passare all'altra lingua.",
-      formats:[
-        ["paperback","Copertina morbida","Da sottolineare e riempire di appunti.","Acquista su Amazon"],
-        ["hardcover","Copertina rigida","Da tenere in libreria, o da regalare.","Acquista su Amazon"],
-        ["kindle","Kindle","Su Kindle e nell'app Kindle, su qualsiasi dispositivo.","Acquista su Amazon"],
-        ["apple","Apple Books","Su iPhone, iPad e Mac.","Apri su Apple Books"],
-        ["audiobook","Audiolibro","Su Audible, Spotify e sulle altre piattaforme di audiolibri.","Trova l'audiolibro"]
-      ],
-      soon:"Dal 24 novembre", soonAudio:"In arrivo",
-      offer_before:"Al lancio l'ebook costa <strong>€9,99</strong> fino al 6 dicembre.",
-      offer_during:"L'ebook costa <strong>€9,99</strong> fino al 6 dicembre.",
-      aud_h:"Ascoltalo",
-      aud_p:"Per la prima volta il libro è anche un audiolibro, in italiano e in inglese, di circa otto ore e mezza. Lo legge una voce sintetica, e su ogni piattaforma è indicato.",
-      aud_note:"L'estratto dura 75 secondi e viene dal capitolo 9.",
-      aud_track:"Capitolo 9, Dal prompt al prodotto", aud_voice:"Voce: Alessio, voce AI",
-      play:"Riproduci l'estratto", pause:"Metti in pausa",
-      gift_h:"Un capitolo in regalo",
-      gift_p:"Per il lancio regalo un capitolo intero. Lo scelgono con un sondaggio le persone che mi seguono su LinkedIn, e qui lo scarichi in PDF.",
-      gift_items:[["it","In italiano","PDF, capitolo completo","Dal 25 novembre","Scarica il PDF"],["en","In inglese","PDF, capitolo completo","Dal 25 novembre","Scarica il PDF"]],
-      pr_h:"41 prompt pronti all'uso",
-      pr_p:"Tutti i prompt del libro, da cercare e copiare, con esempi di risultato. Nel libro c'è il QR code che porta alla libreria.",
-      pr_cta:"Apri la libreria dei prompt",
-      bars:[["Intro",1],["Cap. 2",2],["Cap. 3",8],["Cap. 5",11],["Cap. 6",4],["Cap. 7",11],["Cap. 9",4]],
-      try_t:"Prova subito: la tecnica Feynman", try_s:"IA-32, capitolo 6",
-      try_text:"Voglio utilizzare la Feynman Technique per consolidare la mia comprensione di [concetto]. Ti chiedo di fungere da coach: 1) ti spiegherò il concetto come a un dodicenne intelligente ma senza conoscenze specialistiche; 2) analizza la mia spiegazione e identifica termini non semplificati, passaggi logici saltati e concetti vaghi; 3) ponimi 3-5 domande «ingenue» ma penetranti; 4) guidami nel raffinare la spiegazione; 5) valuta infine la chiarezza e la completezza della spiegazione rispetto ai concetti di riferimento, evidenzia le affermazioni che richiedono verifica e chiedimi di applicare il concetto a uno scenario nuovo, senza suggerirmi subito la soluzione. Ecco la mia spiegazione: [spiegazione]",
-      copy:"Copia il prompt", copied:"Copiato", copyFail:"Selezionato: premi Cmd+C",
-      au_h:"L'autore",
-      au_p:"Emanuele Castagno è un ingegnere elettronico che programma da quando aveva dieci anni. Da trent'anni porta l'innovazione nelle aziende come fondatore, come CEO e oggi alla guida di una business unit internazionale nel settore della certificazione. È LinkedIn Top Voice per l'intelligenza artificiale.",
-      tools:"La directory degli strumenti AI",
-      coverAlt:"Copertina di Intelligenza Aumentata, seconda edizione",
-      cover:"assets/cover-it.jpg", sample:"assets/sample-it.mp3"
-    },
-    en: {
-      nav_book:"The book", nav_formats:"Formats", nav_audio:"Audiobook", nav_gift:"Free chapter", nav_prompts:"Prompts",
-      title:["Augmented","Intelligence"],
-      subtitle:"How AI Empowers Your Capabilities and Your Success",
-      edition:"Second edition, revised and expanded",
-      lead:"A practical handbook written by a manager who uses AI every day: ready-to-use prompts, real business cases and the tools of 2026. With four new chapters on vibe coding, Physical AI, trust in AI and what makes us human.",
-      cta_formats:"Choose your format", cta_listen:"Listen to a sample",
-      before:"Out Tuesday, November 24, 2026", days:function(n){return n===1?"tomorrow":"in "+n+" days"}, today:"Out today", after:"Available in print, ebook and audiobook",
-      thesis_a:"AI does not replace expertise.", thesis_b:"It amplifies it.",
-      thesis_p:"That is the idea that holds the book together. Not theory: the method I use with AI every day, from the first email of the morning to the most complex projects, ready to apply to your own work.",
-      toc_h:"What's inside",
-      toc_p:"Twelve chapters, from everyday use of AI to agents, robots and rules. The four marked chapters are new in this edition.",
-      toc:["The Great Transformation of AI","Prompt Engineering","Efficient Communication in the AI Era","AI for Operational Optimization","Content Generation","AI as a Personal Coach","Redesigning Your Career in the Age of AI","The Next Level of AI","From Prompt to Product","Physical AI","Trust as Infrastructure","Augmented Intelligence and What Makes Us Human"],
-      new_tag:"New",
-      first_ed:"First edition", first_date:"July 2025", second_ed:"Second edition", second_date:"November 2026",
-      ba_h:"Same book, fifteen months later",
-      ba_p:"I wrote the first edition together with five AI systems. For the second, AI did far more than help me write.",
-      ba_then:"First edition", ba_now:"Second edition",
-      ba_r1:"Proofreading and typography", ba_r1a:"AI was of little help in finding errors and fixing the typography.", ba_r1b:"Several frontier models, used together, found the errors and handled the layout in Word.",
-      ba_r2:"Kindle and Apple ebooks", ba_r2a:"Almost 400 pages fixed by hand, one by one.", ba_r2b:"Hundreds of automatic layout tests, run by my AI agents.",
-      ba_r3:"Audiobook", ba_r3a:"None: too complex and too expensive.", ba_r3b:"In Italian and English, narrated by an AI voice.",
-      fmt_h:"Choose how to read it",
-      fmt_p:"Print, ebook or audiobook, in English and Italian. Use the switch at the top to change language.",
-      formats:[
-        ["paperback","Paperback","For underlining and filling with notes.","Buy on Amazon"],
-        ["hardcover","Hardcover","For your bookshelf, or as a gift.","Buy on Amazon"],
-        ["kindle","Kindle","On Kindle and in the Kindle app, on any device.","Buy on Amazon"],
-        ["apple","Apple Books","On iPhone, iPad and Mac.","Open in Apple Books"],
-        ["audiobook","Audiobook","On Audible, Spotify and other audiobook platforms.","Find the audiobook"]
-      ],
-      soon:"From November 24", soonAudio:"Coming soon",
-      offer_before:"", offer_during:"",
-      aud_h:"Listen to it",
-      aud_p:"For the first time the book is also an audiobook, in English and Italian, about eight and a half hours long. It is narrated by a synthetic voice, and every platform says so.",
-      aud_note:"The sample runs 75 seconds and comes from chapter 9.",
-      aud_track:"Chapter 9, From Prompt to Product", aud_voice:"Narrated by Jenny, an AI voice",
-      play:"Play the sample", pause:"Pause",
-      gift_h:"A free chapter",
-      gift_p:"For the launch I am giving away a full chapter. The people who follow me on LinkedIn choose it in a poll, and you can download it here as a PDF.",
-      gift_items:[["en","In English","PDF, full chapter","From November 25","Download the PDF"],["it","In Italian","PDF, full chapter","From November 25","Download the PDF"]],
-      pr_h:"41 ready-to-use prompts",
-      pr_p:"Every prompt in the book, searchable and ready to copy, with sample outputs. The book has a QR code that takes you to the library.",
-      pr_cta:"Open the prompt library",
-      bars:[["Intro",1],["Ch. 2",2],["Ch. 3",8],["Ch. 5",11],["Ch. 6",4],["Ch. 7",11],["Ch. 9",4]],
-      try_t:"Try it now: the Feynman technique", try_s:"IA-32, chapter 6",
-      try_text:"I want to use the Feynman Technique to consolidate my understanding of [concept]. I would like you to act as a coach: 1) I will explain the concept to you as if to an intelligent 12-year-old with no specialist knowledge; 2) analyze my explanation and identify terms that have not been simplified, skipped logical steps and vague concepts; 3) ask me 3-5 \"naive\" but penetrating questions; 4) guide me in refining the explanation; 5) finally, assess the clarity and completeness of the explanation against the reference concepts, highlight the statements that need to be verified and ask me to apply the concept to a new scenario, without suggesting the solution right away. Here is my explanation: [explanation]",
-      copy:"Copy the prompt", copied:"Copied", copyFail:"Selected: press Cmd+C",
-      au_h:"About the author",
-      au_p:"Emanuele Castagno is an electronic engineer who has been programming since he was ten. For thirty years he has brought innovation into companies as a founder, a CEO and today head of an international business unit in the certification industry. He is a LinkedIn Top Voice in artificial intelligence.",
-      tools:"The AI tools directory",
-      coverAlt:"Cover of Augmented Intelligence, second edition",
-      cover:"assets/cover-en.jpg", sample:"assets/sample-en.mp3"
-    }
-  };
-
-  var NEW_CHAPTERS = [9,10,11,12];
-  var lang = "it";
+  var NEW_CHAPTERS = [9,10,11,12], lang = "it";
   var $ = function(id){ return document.getElementById(id); };
-
-  function store(get, val){
-    try { if (get) return localStorage.getItem("ia-lang"); localStorage.setItem("ia-lang", val); } catch(e) { return null; }
-  }
+  function store(get, val){ try { if (get) return localStorage.getItem("ia-lang"); localStorage.setItem("ia-lang", val); } catch(e) { return null; } }
   function pickLang(){
-    var q = null;
-    try { q = new URLSearchParams(location.search).get("lang"); } catch(e) {}
+    var q = null; try { q = new URLSearchParams(location.search).get("lang"); } catch(e) {}
     if (q === "it" || q === "en") return q;
-    var s = store(true);
-    if (s === "it" || s === "en") return s;
+    var s = store(true); if (s === "it" || s === "en") return s;
     return (navigator.language || "it").toLowerCase().indexOf("it") === 0 ? "it" : "en";
   }
   function dayIndex(iso){ var p = iso.split("-"); return Date.UTC(+p[0], +p[1]-1, +p[2]) / 864e5; }
   function todayIndex(){ var d = new Date(); return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
-
-  function render(){
-    var t = T[lang];
-    document.documentElement.lang = lang;
-    document.querySelectorAll("[data-i18n]").forEach(function(el){
-      var k = el.getAttribute("data-i18n");
-      if (typeof t[k] === "string") el.textContent = t[k];
-    });
-    $("title").innerHTML = "<span>" + esc(t.title[0]) + "</span><span class=\"aug\">" + esc(t.title[1]) + "</span>";
-    $("cover").src = t.cover; $("cover").alt = t.coverAlt; $("cover-small").src = t.cover;
-    ["lang-it","lang-en"].forEach(function(id){ $(id).setAttribute("aria-pressed", String($(id).dataset.lang === lang)); });
-
+  function statusHTML(t){
     var left = dayIndex(CONFIG.launch) - todayIndex();
-    $("status").innerHTML = left > 0
-      ? "<strong>" + esc(t.before) + "</strong><span class=\"days\">" + esc(t.days(left)) + "</span>"
-      : "<strong>" + esc(left === 0 ? t.today : t.after) + "</strong>";
-
-    $("toc").innerHTML = t.toc.map(function(name, i){
+    return left > 0 ? "<strong>" + esc(t.before) + "</strong><span class=\"days\">" + esc(t.days(left)) + "</span>"
+                    : "<strong>" + esc(left === 0 ? t.today : t.after) + "</strong>";
+  }
+  function offerHTML(t){
+    var now = todayIndex();
+    if (lang !== "it" || now > dayIndex(CONFIG.ebookOfferEnd)) return "";
+    return now < dayIndex(CONFIG.launch) ? t.offer_before : t.offer_during;
+  }
+  function buyBtn(key, label, cls, wait){
+    var url = CONFIG.links[lang][key];
+    return url ? "<a class=\"btn " + cls + "\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(label) + "</a>"
+               : "<span class=\"btn btn-wait\">" + esc(wait) + "</span>";
+  }
+  function applyText(t){
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){ var k = el.getAttribute("data-i18n"); if (typeof t[k] === "string") el.textContent = t[k]; });
+    ["lang-it","lang-en"].forEach(function(id){ $(id).setAttribute("aria-pressed", String($(id).dataset.lang === lang)); });
+    document.querySelectorAll("[data-cover]").forEach(function(im){ im.src = t.cover; im.alt = t.coverAlt; });
+    document.querySelectorAll("[data-status]").forEach(function(el){ el.innerHTML = statusHTML(t); });
+    document.querySelectorAll("[data-offer]").forEach(function(el){ var o = offerHTML(t); el.innerHTML = o; el.hidden = !o; });
+    var al = $("author-links"); if (al) al.innerHTML = "<a href=\"" + esc(CONFIG.linkedin) + "\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>";
+    var toc = $("toc"); if (toc) toc.innerHTML = t.toc.map(function(name, i){
       var isNew = NEW_CHAPTERS.indexOf(i+1) > -1;
       return "<li" + (isNew ? " class=\"is-new\"" : "") + "><span class=\"t\">" + esc(name) + "</span>" + (isNew ? "<span class=\"new\">" + esc(t.new_tag) + "</span>" : "<span></span>") + "</li>";
     }).join("");
+    var audio = $("audio");
+    if (audio.getAttribute("src") !== t.sample) { audio.pause(); audio.setAttribute("src", t.sample); setPlaying(false); paint(); }
+    $("play").setAttribute("aria-label", audio.paused ? t.play : t.pause);
+  }
+  function fmt(s){ s = Math.max(0, Math.floor(s || 0)); return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); }
+  function setPlaying(on){ $("ico-play").hidden = on; $("ico-pause").hidden = !on; $("play").setAttribute("aria-label", on ? T[lang].pause : T[lang].play); }
+  function paint(){ var a = $("audio"), d = a.duration || 75; $("prog").style.width = ((a.currentTime || 0) / d * 100) + "%"; $("time").textContent = fmt(a.currentTime) + " / " + fmt(d); }
+  function setupPlayer(){
+    var a = $("audio");
+    $("play").addEventListener("click", function(){ if (a.paused) a.play().catch(function(){}); else a.pause(); });
+    a.addEventListener("play", function(){ setPlaying(true); }); a.addEventListener("pause", function(){ setPlaying(false); });
+    a.addEventListener("ended", function(){ a.currentTime = 0; setPlaying(false); paint(); });
+    a.addEventListener("timeupdate", paint); a.addEventListener("loadedmetadata", paint);
+    $("track").addEventListener("click", function(e){ var b = this.getBoundingClientRect(); if (a.duration) { a.currentTime = (e.clientX - b.left) / b.width * a.duration; paint(); } });
+    paint();
+  }
+  function copyText(text, btn, node){
+    var t = T[lang];
+    function done(msg){ btn.textContent = msg; setTimeout(function(){ btn.textContent = T[lang].copy; }, 1800); }
+    function fallback(){ var r = document.createRange(); r.selectNodeContents(node); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done(t.copyFail); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ done(t.copied); }, fallback); else fallback();
+  }
 
-    var links = CONFIG.links[lang];
-    $("formats").innerHTML = t.formats.map(function(f){
-      var url = links[f[0]];
-      var soon = f[0] === "audiobook" ? t.soonAudio : t.soon;
-      var go = url ? "<a class=\"go\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(f[3]) + "</a>" : "<span class=\"go\">" + esc(soon) + "</span>";
-      return "<div class=\"fmt\"><h3>" + esc(f[1]) + "</h3><p>" + esc(f[2]) + "</p>" + go + "</div>";
-    }).join("");
+  var T = {
+    it: {
+      before:"Esce martedì 24 novembre 2026", days:function(n){return n===1?"domani":"tra "+n+" giorni"}, today:"Esce oggi", after:"Disponibile in cartaceo, ebook e audiolibro",
+      offer_before:"Al lancio l'ebook costa <strong>€9,99</strong> fino al 6 dicembre.",
+      offer_during:"L'ebook costa <strong>€9,99</strong> fino al 6 dicembre.",
+      toc:["La grande trasformazione dell'AI","Come comunicare con l'AI generativa","Comunicazione efficiente nell'era AI","L'AI per l'ottimizzazione operativa","Generazione di contenuti","L'AI come coach personale","Riprogettare la tua carriera nell'era dell'AI","Il prossimo livello dell'AI","Dal prompt al prodotto","Physical AI","La fiducia come infrastruttura","Intelligenza aumentata e ciò che ci rende umani"],
+      new_tag:"Nuovo",
+      aud_track:"Capitolo 9, Dal prompt al prodotto", aud_voice:"Voce: Alessio, voce AI", play:"Riproduci l'estratto", pause:"Metti in pausa",
+      copy:"Copia il prompt", copied:"Copiato", copyFail:"Selezionato: premi Cmd+C",
+      au_h:"L'autore",
+      au_p:"Emanuele Castagno è un ingegnere elettronico che programma da quando aveva dieci anni. Da trent'anni porta l'innovazione nelle aziende come fondatore, come CEO e oggi alla guida di una business unit internazionale nel settore della certificazione. È LinkedIn Top Voice per l'intelligenza artificiale.",
+      buy_kindle:"Acquista su Kindle", buy_apple:"Acquista su Apple Books", soon:"Dal 24 novembre", soonAudio:"In arrivo",
+      coverAlt:"Copertina di Intelligenza Aumentata, seconda edizione", cover:"assets/cover-it.jpg", sample:"assets/sample-it.mp3",
 
-    var now = todayIndex(), offer = "";
-    if (lang === "it" && now <= dayIndex(CONFIG.ebookOfferEnd)) offer = now < dayIndex(CONFIG.launch) ? t.offer_before : t.offer_during;
-    $("offer").innerHTML = offer; $("offer").hidden = !offer;
 
+      nav_book:"Il libro", nav_formats:"Formati", nav_audio:"Audiolibro", nav_gift:"Capitolo regalo", nav_prompts:"Prompt",
+      gift_h:"Un capitolo in regalo", gift_p:"Per il lancio regalo un capitolo intero. Lo scelgono con un sondaggio le persone che mi seguono su LinkedIn, e qui lo scarichi in PDF.",
+      gift_items:[["it","In italiano","PDF, capitolo completo","Dal 25 novembre","Scarica il PDF"],["en","In inglese","PDF, capitolo completo","Dal 25 novembre","Scarica il PDF"]],
+      pr_h:"41 prompt pronti all'uso", pr_p:"Tutti i prompt del libro, da cercare e copiare, con esempi di risultato. Nel libro c'è il QR code che porta alla libreria.", pr_cta:"Apri la libreria dei prompt",
+      bars:[["Intro",1],["Cap. 2",2],["Cap. 3",8],["Cap. 5",11],["Cap. 6",4],["Cap. 7",11],["Cap. 9",4]],
+      try_t:"Prova subito: la tecnica Feynman", try_s:"IA-32, capitolo 6",
+      title:["Intelligenza","Aumentata"], subtitle:"Come l'AI potenzia le tue capacità e il tuo successo", edition:"Seconda edizione, aggiornata e ampliata",
+      gets:["Il metodo che un manager usa ogni giorno con l'AI, dalla prima email ai progetti complessi","41 prompt pronti da copiare, con casi aziendali reali e gli strumenti del 2026","Quattro capitoli nuovi: vibe coding, Physical AI, fiducia nell'AI e ciò che ci rende umani"],
+      tabs:[["ebook","Ebook"],["print","Cartaceo"],["audio","Audiolibro"]],
+      hint_ebook:"Lo leggi subito su telefono, tablet o computer. Non serve un Kindle: basta l'app gratuita.",
+      hint_print:"Copertina morbida e copertina rigida escono su Amazon il 24 novembre. Se vuoi iniziare oggi, c'è l'ebook.",
+      hint_audio:"Circa otto ore e mezza, in italiano e in inglese, su Audible, Spotify e le altre piattaforme. Più sotto ascolti un estratto.",
+      paperback:"Copertina morbida", hardcover:"Copertina rigida", audiobook:"Audiolibro",
+      facts:[["12","capitoli, dall'uso quotidiano agli agenti e ai robot"],["4","capitoli nuovi in questa edizione"],["41","prompt pronti all'uso, anche online"],["8h 30","di audiolibro, in italiano e in inglese"]],
+      out_h:"Cosa porti nel tuo lavoro", out_p:"Non teoria. Ogni capitolo finisce in qualcosa che puoi applicare il giorno dopo.",
+      out:[["Fai domande migliori all'AI","Capitolo 2","Come si scrive un prompt chiaro e come si ottiene una risposta che serve."],["Email, riunioni e documenti in meno tempo","Capitoli 3, 4 e 5","Sommari, revisioni, presentazioni e contenuti, con i prompt già pronti."],["Un coach per imparare e per la tua carriera","Capitoli 6 e 7","Dal piano di studio alla simulazione di un colloquio di lavoro."],["Da un'idea a un prodotto","Capitolo 9, nuovo","Il vibe coding spiegato con un progetto vero, dal prompt al prodotto."]],
+      aud_h:"Ascolta 75 secondi", aud_p:"Per la prima volta il libro è anche un audiolibro. Lo legge una voce sintetica, e su ogni piattaforma è indicato. L'estratto viene dal capitolo 9.",
+      toc_h:"Cosa c'è dentro", toc_p:"Dodici capitoli, dall'uso quotidiano dell'AI agli agenti, ai robot e alle regole. I quattro capitoli segnati sono nuovi in questa edizione.",
+      first_ed:"Prima edizione", first_date:"luglio 2025", second_ed:"Seconda edizione", second_date:"novembre 2026",
+      ba_h:"Stesso libro, quindici mesi dopo", ba_p:"La prima edizione l'ho scritta insieme a cinque sistemi di AI. Per la seconda l'AI ha fatto molto di più che aiutarmi a scrivere.",
+      ba_then:"Prima edizione", ba_now:"Seconda edizione",
+      ba_r1:"Correzione e tipografia", ba_r1a:"L'AI mi aiutava poco a trovare gli errori e a sistemare la tipografia.", ba_r1b:"Più modelli di frontiera, usati insieme, hanno trovato gli errori e gestito l'impaginazione in Word.",
+      ba_r2:"Ebook Kindle e Apple", ba_r2a:"Quasi 400 pagine sistemate a mano, una per una.", ba_r2b:"Centinaia di prove di impaginazione automatiche, fatte dai miei agenti AI.",
+      ba_r3:"Audiolibro", ba_r3a:"Non c'era: troppo complesso e troppo costoso.", ba_r3b:"In italiano e in inglese, letto da una voce AI.",
+      faq_h:"Prima di comprare",
+      faq:[["Non sono un tecnico. Fa per me?","Sì. È un manuale pratico scritto da un manager per manager, professionisti e imprenditori. Si parte dall'uso di tutti i giorni: email, documenti, riunioni."],["Ho già la prima edizione. Cosa cambia?","Quattro capitoli nuovi, dal 9 al 12, gli strumenti aggiornati al 2026 e, per la prima volta, l'audiolibro."],["Serve un Kindle per leggere l'ebook?","No. Basta l'app Kindle gratuita su telefono, tablet o computer, oppure Apple Books su iPhone, iPad e Mac."],["I prompt devo ricopiarli dal libro?","No. Tutti i 41 prompt sono in una libreria online da cui li copi con un clic. Nel libro c'è il QR code che ti porta lì."],["Esiste anche in inglese?","Sì. Ogni formato esce in italiano e in inglese. Cambia lingua con il selettore in alto."]],
+      fin_h:"Inizia a leggerlo stasera", fin_p:"L'ebook è già disponibile. Cartaceo e audiolibro arrivano con il lancio.",
+      sticky_t:"Intelligenza Aumentata", sticky_s:"Ebook, seconda edizione"
+    },
+    en: {
+      before:"Out Tuesday, November 24, 2026", days:function(n){return n===1?"tomorrow":"in "+n+" days"}, today:"Out today", after:"Available in print, ebook and audiobook",
+      offer_before:"", offer_during:"",
+      toc:["The Great Transformation of AI","Prompt Engineering","Efficient Communication in the AI Era","AI for Operational Optimization","Content Generation","AI as a Personal Coach","Redesigning Your Career in the Age of AI","The Next Level of AI","From Prompt to Product","Physical AI","Trust as Infrastructure","Augmented Intelligence and What Makes Us Human"],
+      new_tag:"New",
+      aud_track:"Chapter 9, From Prompt to Product", aud_voice:"Narrated by Jenny, an AI voice", play:"Play the sample", pause:"Pause",
+      copy:"Copy the prompt", copied:"Copied", copyFail:"Selected: press Cmd+C",
+      au_h:"About the author",
+      au_p:"Emanuele Castagno is an electronic engineer who has been programming since he was ten. For thirty years he has brought innovation into companies as a founder, a CEO and today head of an international business unit in the certification industry. He is a LinkedIn Top Voice in artificial intelligence.",
+      buy_kindle:"Buy on Kindle", buy_apple:"Buy on Apple Books", soon:"From November 24", soonAudio:"Coming soon",
+      coverAlt:"Cover of Augmented Intelligence, second edition", cover:"assets/cover-en.jpg", sample:"assets/sample-en.mp3",
+
+
+      nav_book:"The book", nav_formats:"Formats", nav_audio:"Audiobook", nav_gift:"Free chapter", nav_prompts:"Prompts",
+      gift_h:"A free chapter", gift_p:"For the launch I am giving away a full chapter. The people who follow me on LinkedIn choose it in a poll, and you can download it here as a PDF.",
+      gift_items:[["en","In English","PDF, full chapter","From November 25","Download the PDF"],["it","In Italian","PDF, full chapter","From November 25","Download the PDF"]],
+      pr_h:"41 ready-to-use prompts", pr_p:"Every prompt in the book, searchable and ready to copy, with sample outputs. The book has a QR code that takes you to the library.", pr_cta:"Open the prompt library",
+      bars:[["Intro",1],["Ch. 2",2],["Ch. 3",8],["Ch. 5",11],["Ch. 6",4],["Ch. 7",11],["Ch. 9",4]],
+      try_t:"Try it now: the Feynman technique", try_s:"IA-32, chapter 6",
+      title:["Augmented","Intelligence"], subtitle:"How AI Empowers Your Capabilities and Your Success", edition:"Second edition, revised and expanded",
+      gets:["The method a manager uses with AI every day, from the first email to complex projects","41 prompts ready to copy, with real business cases and the tools of 2026","Four new chapters: vibe coding, Physical AI, trust in AI and what makes us human"],
+      tabs:[["ebook","Ebook"],["print","Print"],["audio","Audiobook"]],
+      hint_ebook:"Read it right away on your phone, tablet or computer. No Kindle needed: the free app is enough.",
+      hint_print:"Paperback and hardcover come out on Amazon on November 24. To start today, pick the ebook.",
+      hint_audio:"About eight and a half hours, in English and Italian, on Audible, Spotify and other platforms. You can hear a sample further down.",
+      paperback:"Paperback", hardcover:"Hardcover", audiobook:"Audiobook",
+      facts:[["12","chapters, from everyday use to agents and robots"],["4","new chapters in this edition"],["41","ready-to-use prompts, also online"],["8h 30","of audiobook, in English and Italian"]],
+      out_h:"What you take back to work", out_p:"Not theory. Every chapter ends in something you can apply the next day.",
+      out:[["Ask AI better questions","Chapter 2","How to write a clear prompt and get an answer you can use."],["Emails, meetings and documents in less time","Chapters 3, 4 and 5","Summaries, reviews, presentations and content, with the prompts ready."],["A coach for learning and for your career","Chapters 6 and 7","From a study plan to a mock job interview."],["From an idea to a product","Chapter 9, new","Vibe coding explained through a real project, from prompt to product."]],
+      aud_h:"Listen to 75 seconds", aud_p:"For the first time the book is also an audiobook. It is narrated by a synthetic voice, and every platform says so. The sample comes from chapter 9.",
+      toc_h:"What's inside", toc_p:"Twelve chapters, from everyday use of AI to agents, robots and rules. The four marked chapters are new in this edition.",
+      first_ed:"First edition", first_date:"July 2025", second_ed:"Second edition", second_date:"November 2026",
+      ba_h:"Same book, fifteen months later", ba_p:"I wrote the first edition together with five AI systems. For the second, AI did far more than help me write.",
+      ba_then:"First edition", ba_now:"Second edition",
+      ba_r1:"Proofreading and typography", ba_r1a:"AI was of little help in finding errors and fixing the typography.", ba_r1b:"Several frontier models, used together, found the errors and handled the layout in Word.",
+      ba_r2:"Kindle and Apple ebooks", ba_r2a:"Almost 400 pages fixed by hand, one by one.", ba_r2b:"Hundreds of automatic layout tests, run by my AI agents.",
+      ba_r3:"Audiobook", ba_r3a:"None: too complex and too expensive.", ba_r3b:"In Italian and English, narrated by an AI voice.",
+      faq_h:"Before you buy",
+      faq:[["I am not technical. Is it for me?","Yes. It is a practical handbook written by a manager for managers, professionals and entrepreneurs. It starts from everyday work: emails, documents, meetings."],["I already have the first edition. What changes?","Four new chapters, 9 to 12, tools updated to 2026 and, for the first time, the audiobook."],["Do I need a Kindle to read the ebook?","No. The free Kindle app on your phone, tablet or computer is enough, or Apple Books on iPhone, iPad and Mac."],["Do I have to retype the prompts from the book?","No. All 41 prompts are in an online library where you copy them with one click. The book has a QR code that takes you there."],["Is there an Italian edition?","Yes. Every format comes in English and Italian. Change language with the switch at the top."]],
+      fin_h:"Start reading tonight", fin_p:"The ebook is already available. Print and audiobook arrive with the launch.",
+      sticky_t:"Augmented Intelligence", sticky_s:"Ebook, second edition"
+    }
+  };
+  var FEYN = {"it": "Voglio utilizzare la Feynman Technique per consolidare la mia comprensione di [concetto]. Ti chiedo di fungere da coach: 1) ti spiegherò il concetto come a un dodicenne intelligente ma senza conoscenze specialistiche; 2) analizza la mia spiegazione e identifica termini non semplificati, passaggi logici saltati e concetti vaghi; 3) ponimi 3-5 domande «ingenue» ma penetranti; 4) guidami nel raffinare la spiegazione; 5) valuta infine la chiarezza e la completezza della spiegazione rispetto ai concetti di riferimento, evidenzia le affermazioni che richiedono verifica e chiedimi di applicare il concetto a uno scenario nuovo, senza suggerirmi subito la soluzione. Ecco la mia spiegazione: [spiegazione]", "en": "I want to use the Feynman Technique to consolidate my understanding of [concept]. I would like you to act as a coach: 1) I will explain the concept to you as if to an intelligent 12-year-old with no specialist knowledge; 2) analyze my explanation and identify terms that have not been simplified, skipped logical steps and vague concepts; 3) ask me 3-5 \"naive\" but penetrating questions; 4) guide me in refining the explanation; 5) finally, assess the clarity and completeness of the explanation against the reference concepts, highlight the statements that need to be verified and ask me to apply the concept to a new scenario, without suggesting the solution right away. Here is my explanation: [explanation]"};
+  function low(x){ return x.charAt(0).toLowerCase() + x.slice(1); }
+  var tab = "ebook";
+  var CHECK = "<svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M4 10.5l4 4 8-9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>";
+  function panel(){
+    var t = T[lang], h = "";
+    if (tab === "ebook") h = "<div class=\"row\">" + buyBtn("kindle", t.buy_kindle, "btn-primary", t.soon) + buyBtn("apple", t.buy_apple, "btn-ghost", t.soon) + "</div><div class=\"txt\">" + (offerHTML(t) ? "<p class=\"offer\">" + offerHTML(t) + "</p>" : "") + "<p class=\"hint\">" + esc(t.hint_ebook) + "</p></div>";
+    else if (tab === "print") h = "<div class=\"row\">" + buyBtn("paperback", t.paperback, "btn-primary", t.paperback + ", " + low(t.soon)) + buyBtn("hardcover", t.hardcover, "btn-ghost", t.hardcover + ", " + low(t.soon)) + "</div><p class=\"hint\">" + esc(t.hint_print) + "</p>";
+    else h = "<div class=\"row\">" + buyBtn("audiobook", t.audiobook, "btn-primary", t.audiobook + ", " + low(t.soonAudio)) + "</div><p class=\"hint\">" + esc(t.hint_audio) + "</p>";
+    $("panel").innerHTML = h;
+    $("tabs").innerHTML = t.tabs.map(function(x){ return "<button type=\"button\" role=\"tab\" id=\"tab-" + x[0] + "\" data-tab=\"" + x[0] + "\" aria-selected=\"" + (x[0] === tab) + "\">" + esc(x[1]) + "</button>"; }).join("");
+  }
+  function render(){
+    var t = T[lang]; applyText(t);
+    $("title").innerHTML = "<span>" + esc(t.title[0]) + "</span><span class=\"aug\">" + esc(t.title[1]) + "</span>";
+    $("gets").innerHTML = t.gets.map(function(g){ return "<li>" + CHECK + "<span>" + esc(g) + "</span></li>"; }).join("");
+    $("facts").innerHTML = t.facts.map(function(f){ return "<div><b>" + esc(f[0]) + "</b><span>" + esc(f[1]) + "</span></div>"; }).join("");
+    $("out").innerHTML = t.out.map(function(o){ return "<li><small>" + esc(o[1]) + "</small><b>" + esc(o[0]) + "</b><span>" + esc(o[2]) + "</span></li>"; }).join("");
+    $("faq").innerHTML = t.faq.map(function(q){ return "<details><summary>" + esc(q[0]) + "</summary><p>" + esc(q[1]) + "</p></details>"; }).join("");
+    $("final-buy").innerHTML = buyBtn("kindle", t.buy_kindle, "btn-primary", t.soon) + buyBtn("apple", t.buy_apple, "btn-ghost", t.soon);
+    $("sticky-buy").innerHTML = buyBtn("kindle", t.buy_kindle, "btn-primary", t.soon);
     $("gift").innerHTML = t.gift_items.map(function(g){
       var url = CONFIG.gift[g[0]];
       var right = url ? "<a class=\"btn btn-primary\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(g[4]) + "</a>" : "<span class=\"when\">" + esc(g[3]) + "</span>";
       return "<div class=\"dl-item\"><div><b>" + esc(g[1]) + "</b><small>" + esc(g[2]) + "</small></div>" + right + "</div>";
     }).join("");
-
-    $("bars").innerHTML = t.bars.map(function(b){
-      return "<div class=\"bar\"><span>" + esc(b[0]) + "</span><i style=\"--n:" + b[1] + "\"></i><b>" + b[1] + "</b></div>";
-    }).join("");
-    $("try-text").textContent = t.try_text;
-    $("copy").textContent = t.copy;
-
-    var al = "";
-    if (CONFIG.linkedin) al += "<a href=\"" + esc(CONFIG.linkedin) + "\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>";
-    $("author-links").innerHTML = al;
-
-    var audio = $("audio");
-    if (audio.getAttribute("src") !== t.sample) { audio.pause(); audio.setAttribute("src", t.sample); setPlaying(false); }
-    $("play").setAttribute("aria-label", audio.paused ? t.play : t.pause);
-    drawWave();
+    $("bars").innerHTML = t.bars.map(function(b){ return "<div class=\"bar\"><span>" + esc(b[0]) + "</span><i style=\"--n:" + b[1] + "\"></i><b>" + b[1] + "</b></div>"; }).join("");
+    $("try-text").textContent = FEYN[lang]; $("copy").textContent = t.copy;
+    panel();
   }
-
-  function setLang(l){ lang = l; store(false, l); render(); }
-  document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ setLang(b.dataset.lang); }); });
-
-  /* Copy button */
-  $("copy").addEventListener("click", function(){
-    var t = T[lang], btn = this, text = t.try_text;
-    function done(msg){ btn.textContent = msg; setTimeout(function(){ btn.textContent = T[lang].copy; }, 1800); }
-    function fallback(){
-      var r = document.createRange(); r.selectNodeContents($("try-text"));
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done(t.copyFail);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ done(t.copied); }, fallback);
-    else fallback();
-  });
+  $("tabs").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) { tab = b.dataset.tab; panel(); $("tab-" + tab).focus(); } });
+  $("copy").addEventListener("click", function(){ copyText(FEYN[lang], this, $("try-text")); });
+  document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ lang = b.dataset.lang; store(false, lang); render(); }); });
+  setupPlayer(); lang = pickLang(); render();
 
   /* Rings: the circuit motif from the cover, drawn around the book */
-  var css = getComputedStyle(document.documentElement);
   function col(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var cv = $("rings"), ctx = cv.getContext("2d"), W = 0, H = 0, dpr = 1;
@@ -630,38 +542,28 @@ footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wr
   for (var i = 0; i < 9; i++){
     var r = 0.50 + i * 0.058, kind = ["arc","ticks","arc","pins","ticks","arc","pins","arc","ticks"][i];
     var segs = [], a = rnd() * Math.PI * 2, n = 2 + Math.floor(rnd() * 3);
-    for (var s = 0; s < n; s++){ var len = 0.35 + rnd() * 1.1; segs.push([a, len]); a += len + 0.25 + rnd() * 0.9; }
+    for (var sI = 0; sI < n; sI++){ var len = 0.35 + rnd() * 1.1; segs.push([a, len]); a += len + 0.25 + rnd() * 0.9; }
     rings.push({ r:r, kind:kind, segs:segs, speed:(rnd() * 0.05 + 0.015) * (i % 2 ? -1 : 1), teal: i % 3 !== 1, w: kind === "arc" ? (i % 2 ? 1.2 : 2.2) : 1.4 });
   }
-  function size(){
-    var b = cv.getBoundingClientRect(); dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = b.width; H = b.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-  }
+  function size(){ var b = cv.getBoundingClientRect(); dpr = Math.min(window.devicePixelRatio || 1, 2); W = b.width; H = b.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
   function drawRings(time, prog){
     ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
     var cx = W/2, cy = H/2, R = Math.min(W,H)/2 * 0.98, teal = col("--teal"), steel = col("--steel");
-    rings.forEach(function(g, gi){
+    rings.forEach(function(g){
       var rot = reduce ? 0 : time * g.speed, rad = g.r * R;
-      ctx.strokeStyle = g.teal ? teal : steel; ctx.fillStyle = ctx.strokeStyle; ctx.lineWidth = g.w;
-      ctx.globalAlpha = g.teal ? 0.85 : 0.65;
+      ctx.strokeStyle = g.teal ? teal : steel; ctx.fillStyle = ctx.strokeStyle; ctx.lineWidth = g.w; ctx.globalAlpha = g.teal ? 0.85 : 0.65;
       g.segs.forEach(function(sg){
         var a0 = sg[0] + rot, a1 = a0 + sg[1] * prog;
         if (g.kind === "arc"){ ctx.beginPath(); ctx.arc(cx, cy, rad, a0, a1); ctx.stroke(); }
         else if (g.kind === "ticks"){
-          var step = 0.055, inner = rad - R*0.022;
-          for (var t = a0; t < a1; t += step){
-            ctx.beginPath(); ctx.moveTo(cx + Math.cos(t)*inner, cy + Math.sin(t)*inner); ctx.lineTo(cx + Math.cos(t)*rad, cy + Math.sin(t)*rad);
-            ctx.lineWidth = R*0.012; ctx.stroke();
-          }
+          var inner = rad - R*0.022;
+          for (var q = a0; q < a1; q += 0.055){ ctx.beginPath(); ctx.moveTo(cx + Math.cos(q)*inner, cy + Math.sin(q)*inner); ctx.lineTo(cx + Math.cos(q)*rad, cy + Math.sin(q)*rad); ctx.lineWidth = R*0.012; ctx.stroke(); }
           ctx.lineWidth = g.w;
         } else {
           ctx.beginPath(); ctx.arc(cx, cy, rad, a0, a1); ctx.stroke();
-          var ends = [a0, a1];
-          ends.forEach(function(e, k){
-            var out = rad + (k ? R*0.07 : -R*0.06);
-            var x1 = cx + Math.cos(e)*rad, y1 = cy + Math.sin(e)*rad, x2 = cx + Math.cos(e)*out, y2 = cy + Math.sin(e)*out;
-            ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
-            ctx.beginPath(); ctx.arc(x2, y2, R*0.014, 0, Math.PI*2); ctx.fill();
+          [a0, a1].forEach(function(e, k){
+            var out = rad + (k ? R*0.07 : -R*0.06), x1 = cx + Math.cos(e)*rad, y1 = cy + Math.sin(e)*rad, x2 = cx + Math.cos(e)*out, y2 = cy + Math.sin(e)*out;
+            ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); ctx.beginPath(); ctx.arc(x2, y2, R*0.014, 0, Math.PI*2); ctx.fill();
           });
         }
       });
@@ -669,58 +571,10 @@ footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wr
     ctx.globalAlpha = 1;
   }
   var start = null;
-  function loop(ts){
-    if (start === null) start = ts;
-    var el = (ts - start) / 1000, prog = reduce ? 1 : Math.min(1, el / 1.6);
-    prog = 1 - Math.pow(1 - prog, 3);
-    drawRings(el, prog);
-    if (!reduce) requestAnimationFrame(loop);
-  }
+  function loop(ts){ if (start === null) start = ts; var el = (ts - start) / 1000, prog = reduce ? 1 : Math.min(1, el / 1.6); prog = 1 - Math.pow(1 - prog, 3); drawRings(el, prog); if (!reduce) requestAnimationFrame(loop); }
   size(); requestAnimationFrame(loop);
   if (window.ResizeObserver) new ResizeObserver(function(){ size(); if (reduce) drawRings(0,1); }).observe(cv);
-  var mq = window.matchMedia("(prefers-color-scheme: dark)");
-  if (mq.addEventListener) mq.addEventListener("change", function(){ if (reduce) drawRings(0,1); drawWave(); });
-
-  /* Audio sample with a drawn waveform */
-  var audio = $("audio"), wave = $("wave"), wctx = wave.getContext("2d");
-  var peaks = (function(){ var p = [], s = 11; for (var i = 0; i < 90; i++){ s = (s * 48271) % 2147483647; var v = (s % 1000) / 1000; p.push(0.28 + 0.72 * Math.abs(Math.sin(i * 0.37) * 0.6 + v * 0.5)); } return p; })();
-  function fmt(s){ s = Math.max(0, Math.floor(s || 0)); return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); }
-  function drawWave(){
-    var b = wave.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
-    if (!b.width) return;
-    wave.width = Math.round(b.width * d); wave.height = Math.round(b.height * d);
-    wctx.setTransform(d,0,0,d,0,0); wctx.clearRect(0,0,b.width,b.height);
-    var dur = audio.duration || 75, pos = (audio.currentTime || 0) / dur, n = peaks.length, gap = 2, bw = (b.width - gap*(n-1)) / n;
-    var played = col("--teal"), rest = col("--steel");
-    for (var i = 0; i < n; i++){
-      var h = peaks[i] * b.height * 0.9, x = i * (bw + gap);
-      wctx.fillStyle = (i / n) < pos ? played : rest; wctx.globalAlpha = (i / n) < pos ? 1 : 0.7;
-      wctx.fillRect(x, (b.height - h)/2, Math.max(1, bw), h);
-    }
-    wctx.globalAlpha = 1;
-    $("time").textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration || 75);
-  }
-  function setPlaying(on){
-    $("ico-play").hidden = on; $("ico-pause").hidden = !on;
-    $("play").setAttribute("aria-label", on ? T[lang].pause : T[lang].play);
-  }
-  $("play").addEventListener("click", function(){
-    if (audio.paused){ var p = audio.play(); if (p && p.catch) p.catch(function(){ setPlaying(false); }); }
-    else audio.pause();
-  });
-  audio.addEventListener("play", function(){ setPlaying(true); });
-  audio.addEventListener("pause", function(){ setPlaying(false); });
-  audio.addEventListener("ended", function(){ setPlaying(false); drawWave(); });
-  audio.addEventListener("timeupdate", drawWave);
-  audio.addEventListener("loadedmetadata", drawWave);
-  wave.addEventListener("click", function(e){
-    var b = wave.getBoundingClientRect(); if (!audio.duration) return;
-    audio.currentTime = (e.clientX - b.left) / b.width * audio.duration; drawWave();
-  });
-  window.addEventListener("resize", drawWave);
-
-  lang = pickLang();
-  render();
+  if (window.IntersectionObserver) new IntersectionObserver(function(en){ $("sticky").classList.toggle("on", !en[0].isIntersecting && en[0].boundingClientRect.top < 0); }).observe($("buybox"));
 })();
 </script>
 </body>
