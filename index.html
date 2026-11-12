@@ -395,7 +395,7 @@ footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wr
       <h2 data-i18n="au_h">L'autore</h2>
       <div>
         <p class="measure" data-i18n="au_p">Emanuele Castagno è un ingegnere elettronico che programma da quando aveva dieci anni. Da trent'anni porta l'innovazione nelle aziende come fondatore, come CEO e oggi alla guida di una business unit internazionale nel settore della certificazione. È LinkedIn Top Voice per l'intelligenza artificiale.</p>
-        <div class="links" id="author-links"><a href="https://castagno.biz" target="_blank" rel="noopener">castagno.biz</a></div>
+        <div class="links" id="author-links"></div>
       </div>
     </div>
   </section>
@@ -404,7 +404,6 @@ footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wr
 <footer>
   <div class="wrap">
     <span>© 2025-2026 Emanuele Castagno</span>
-    <a href="tools.html" data-i18n="tools">La directory degli strumenti AI</a>
   </div>
 </footer>
 
@@ -596,7 +595,7 @@ footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wr
     $("try-text").textContent = t.try_text;
     $("copy").textContent = t.copy;
 
-    var al = "<a href=\"https://castagno.biz\" target=\"_blank\" rel=\"noopener\">castagno.biz</a>";
+    var al = "";
     if (CONFIG.linkedin) al += "<a href=\"" + esc(CONFIG.linkedin) + "\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>";
     $("author-links").innerHTML = al;
 
