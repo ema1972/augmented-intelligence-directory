@@ -23,6 +23,7 @@
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0} img{max-width:100%} [hidden]{display:none!important}
 </style>
+<script data-goatcounter="https://castagno.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <style>
@@ -373,7 +374,7 @@ section.block{scroll-margin-top:8px}
   }
   function buyBtn(key, label, cls, wait){
     var url = CONFIG.links[lang][key];
-    return url ? "<a class=\"btn " + cls + "\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(label) + "</a>"
+    return url ? "<a class=\"btn " + cls + "\" data-track=\"buy-" + key + "-" + lang + "\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(label) + "</a>"
                : "<span class=\"btn btn-wait\">" + esc(wait) + "</span>";
   }
   function applyText(t){
@@ -521,7 +522,7 @@ section.block{scroll-margin-top:8px}
     $("sticky-buy").innerHTML = buyBtn("kindle", t.buy_kindle, "btn-primary", t.soon);
     $("gift").innerHTML = t.gift_items.map(function(g){
       var url = CONFIG.gift[g[0]];
-      var right = url ? "<a class=\"btn btn-primary\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(g[4]) + "</a>" : "<span class=\"when\">" + esc(g[3]) + "</span>";
+      var right = url ? "<a class=\"btn btn-primary\" data-track=\"gift-pdf-" + g[0] + "\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(g[4]) + "</a>" : "<span class=\"when\">" + esc(g[3]) + "</span>";
       return "<div class=\"dl-item\"><div><b>" + esc(g[1]) + "</b><small>" + esc(g[2]) + "</small></div>" + right + "</div>";
     }).join("");
     $("bars").innerHTML = t.bars.map(function(b){ return "<div class=\"bar\"><span>" + esc(b[0]) + "</span><i style=\"--n:" + b[1] + "\"></i><b>" + b[1] + "</b></div>"; }).join("");
@@ -531,6 +532,11 @@ section.block{scroll-margin-top:8px}
   $("tabs").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) { tab = b.dataset.tab; panel(); $("tab-" + tab).focus(); } });
   $("copy").addEventListener("click", function(){ copyText(FEYN[lang], this, $("try-text")); });
   document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ lang = b.dataset.lang; store(false, lang); render(); }); });
+  /* Click counting (GoatCounter): purchase buttons and free chapter downloads */
+  document.addEventListener("click", function(e){
+    var a = e.target.closest("[data-track]"); if (!a) return;
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: a.dataset.track, title: a.textContent, event: true }); } catch(err) {}
+  });
   setupPlayer(); lang = pickLang(); render();
 
   /* Rings: the circuit motif from the cover, drawn around the book */
