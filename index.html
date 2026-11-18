@@ -163,6 +163,8 @@ footer{padding-block:32px 48px; color:var(--ink-soft); font-family:var(--display
 .out small{font-family:var(--display); font-size:.88rem; color:var(--teal-ink)}
 .out span{color:var(--ink-soft)}
 @media (max-width:760px){ .out{grid-template-columns:minmax(0,1fr)} }
+.vid{margin:0; justify-self:center; width:min(100%,340px)}
+.vid video{display:block; width:100%; height:auto; aspect-ratio:9/16; border-radius:14px; background:var(--ink); box-shadow:0 24px 44px -26px var(--shadow)}
 .split{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:clamp(24px,5vw,72px); align-items:center}
 @media (max-width:860px){ .hero,.split{grid-template-columns:minmax(0,1fr)} .stage{max-width:300px} .panel{grid-template-columns:minmax(0,1fr)} }
 .faq{max-width:760px; display:grid}
@@ -236,6 +238,13 @@ section.block{scroll-margin-top:8px}
   </div>
 
   <div class="facts"><div class="wrap" id="facts"></div></div>
+
+  <section class="block" id="video" hidden>
+    <div class="wrap split">
+      <div class="head" style="margin:0"><h2 data-i18n="vid_h"></h2><p data-i18n="vid_p"></p></div>
+      <figure class="vid"><video id="vid" controls playsinline preload="none" width="720" height="1280"></video></figure>
+    </div>
+  </section>
 
   <section class="block">
     <div class="wrap">
@@ -347,6 +356,7 @@ section.block{scroll-margin-top:8px}
       en: { paperback:null, hardcover:null, kindle:"https://www.amazon.it/dp/B0HQJ87VQK", apple:"https://books.apple.com/it/book/augmented-intelligence/id6748159328", audiobook:null }
     },
     gift: { it:null, en:null },
+    videoFrom: "2026-11-24",
     linkedin: "https://www.linkedin.com/in/emanuelecastagno/",
     library: "https://castagno.biz/prompts.html"
   };
@@ -389,6 +399,10 @@ section.block{scroll-margin-top:8px}
       var isNew = NEW_CHAPTERS.indexOf(i+1) > -1;
       return "<li" + (isNew ? " class=\"is-new\"" : "") + "><span class=\"t\">" + esc(name) + "</span>" + (isNew ? "<span class=\"new\">" + esc(t.new_tag) + "</span>" : "<span></span>") + "</li>";
     }).join("");
+    var vs = $("video"), v = $("vid");
+    var showVid = todayIndex() >= dayIndex(CONFIG.videoFrom) || /[?&]preview=video/.test(location.search);
+    vs.hidden = !showVid;
+    if (showVid && v.getAttribute("src") !== t.video) { v.pause(); v.setAttribute("poster", t.poster); v.setAttribute("src", t.video); v.setAttribute("aria-label", t.vid_h); }
     var audio = $("audio");
     if (audio.getAttribute("src") !== t.sample) { audio.pause(); audio.setAttribute("src", t.sample); setPlaying(false); paint(); }
     $("play").setAttribute("aria-label", audio.paused ? t.play : t.pause);
@@ -443,6 +457,7 @@ section.block{scroll-margin-top:8px}
       facts:[["12","capitoli, dall'uso quotidiano agli agenti e ai robot"],["4","capitoli nuovi in questa edizione"],["41","prompt pronti all'uso, anche online"],["8h 30","di audiolibro, in italiano e in inglese"]],
       out_h:"Cosa porti nel tuo lavoro", out_p:"Non teoria. Ogni capitolo finisce in qualcosa che puoi applicare il giorno dopo.",
       out:[["Fai domande migliori all'AI","Capitolo 2","Come si scrive un prompt chiaro e come si ottiene una risposta che serve."],["Email, riunioni e documenti in meno tempo","Capitoli 3, 4 e 5","Sommari, revisioni, presentazioni e contenuti, con i prompt già pronti."],["Un coach per imparare e per la tua carriera","Capitoli 6 e 7","Dal piano di studio alla simulazione di un colloquio di lavoro."],["Da un'idea a un prodotto","Capitolo 9, nuovo","Il vibe coding spiegato con un progetto vero, dal prompt al prodotto."]],
+      vid_h:"Te lo racconto in 43 secondi", vid_p:"Perché ho riscritto il libro, a chi serve e cosa trovi dentro. Ha i sottotitoli: lo guardi anche senza audio.", video:"assets/video/libro-it.mp4", poster:"assets/video/poster-it.jpg",
       aud_h:"Ascolta 75 secondi", aud_p:"Per la prima volta il libro è anche un audiolibro. Lo legge una voce sintetica, e su ogni piattaforma è indicato. L'estratto viene dal capitolo 9.",
       toc_h:"Cosa c'è dentro", toc_p:"Dodici capitoli, dall'uso quotidiano dell'AI agli agenti, ai robot e alle regole. I quattro capitoli segnati sono nuovi in questa edizione.",
       first_ed:"Prima edizione", first_date:"luglio 2025", second_ed:"Seconda edizione", second_date:"novembre 2026",
@@ -485,6 +500,7 @@ section.block{scroll-margin-top:8px}
       facts:[["12","chapters, from everyday use to agents and robots"],["4","new chapters in this edition"],["41","ready-to-use prompts, also online"],["8h 30","of audiobook, in English and Italian"]],
       out_h:"What you take back to work", out_p:"Not theory. Every chapter ends in something you can apply the next day.",
       out:[["Ask AI better questions","Chapter 2","How to write a clear prompt and get an answer you can use."],["Emails, meetings and documents in less time","Chapters 3, 4 and 5","Summaries, reviews, presentations and content, with the prompts ready."],["A coach for learning and for your career","Chapters 6 and 7","From a study plan to a mock job interview."],["From an idea to a product","Chapter 9, new","Vibe coding explained through a real project, from prompt to product."]],
+      vid_h:"The book in 43 seconds", vid_p:"Why I rewrote it, who it is for and what you will find inside. It is subtitled, so you can watch it without sound.", video:"assets/video/libro-en.mp4", poster:"assets/video/poster-en.jpg",
       aud_h:"Listen to 75 seconds", aud_p:"For the first time the book is also an audiobook. It is narrated by a synthetic voice, and every platform says so. The sample comes from chapter 9.",
       toc_h:"What's inside", toc_p:"Twelve chapters, from everyday use of AI to agents, robots and rules. The four marked chapters are new in this edition.",
       first_ed:"First edition", first_date:"July 2025", second_ed:"Second edition", second_date:"November 2026",
@@ -536,6 +552,12 @@ section.block{scroll-margin-top:8px}
   document.addEventListener("click", function(e){
     var a = e.target.closest("[data-track]"); if (!a) return;
     try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: a.dataset.track, title: a.textContent, event: true }); } catch(err) {}
+  });
+  /* Count each video start once per language */
+  var vidCounted = {};
+  $("vid").addEventListener("play", function(){
+    if (vidCounted[lang]) return; vidCounted[lang] = true;
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "video-play-" + lang, title: T[lang].vid_h, event: true }); } catch(err) {}
   });
   setupPlayer(); lang = pickLang(); render();
 
