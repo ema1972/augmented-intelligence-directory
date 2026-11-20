@@ -352,8 +352,8 @@ section.block{scroll-margin-top:8px}
   var CONFIG = {
     launch: "2026-11-24", ebookOfferEnd: "2026-12-06",
     links: {
-      it: { paperback:"https://www.amazon.it/dp/B0HS8W2XHL", hardcover:"https://www.amazon.it/dp/B0HS91G4Q8", kindle:"https://www.amazon.it/dp/B0HQJ1VCR7", apple:"https://books.apple.com/it/book/intelligenza-aumentata/id6747316004", audiobook:"https://www.audible.it/pd/B0HQZBLY87" },
-      en: { paperback:"https://www.amazon.it/dp/B0HS8VQMSN", hardcover:"https://www.amazon.it/dp/B0HS8SQSZT", kindle:"https://www.amazon.it/dp/B0HQJ87VQK", apple:"https://books.apple.com/it/book/augmented-intelligence/id6748159328", audiobook:"https://www.audible.it/pd/B0HQWKX248" }
+      it: { paperback:"https://www.amazon.it/dp/B0HS8W2XHL", hardcover:"https://www.amazon.it/dp/B0HS91G4Q8", kindle:"https://www.amazon.it/dp/B0HQJ1VCR7", apple:"https://books.apple.com/it/book/intelligenza-aumentata/id6747316004", audiobook:"https://www.audible.it/pd/B0HQZBLY87", spotify:"https://open.spotify.com/show/2RKyIGPp1uoNy67bHPbc77" },
+      en: { paperback:"https://www.amazon.it/dp/B0HS8VQMSN", hardcover:"https://www.amazon.it/dp/B0HS8SQSZT", kindle:"https://www.amazon.it/dp/B0HQJ87VQK", apple:"https://books.apple.com/it/book/augmented-intelligence/id6748159328", audiobook:"https://www.audible.it/pd/B0HQWKX248", spotify:"https://open.spotify.com/show/0mdjeMRbjDrj0cOWnTVaxR" }
     },
     gift: { it:"assets/pdf/Intelligenza-Aumentata_Capitolo-09_Dal-prompt-al-prodotto.pdf", en:"assets/pdf/Augmented-Intelligence_Chapter-09_From-Prompt-to-Product.pdf" },
     videoFrom: "2026-11-18",
@@ -437,7 +437,7 @@ section.block{scroll-margin-top:8px}
       copy:"Copia il prompt", copied:"Copiato", copyFail:"Selezionato: premi Cmd+C",
       au_h:"L'autore",
       au_p:"Emanuele Castagno è un ingegnere elettronico che programma da quando aveva dieci anni. Da trent'anni porta l'innovazione nelle aziende come fondatore, come CEO e oggi alla guida di una business unit internazionale nel settore della certificazione. È LinkedIn Top Voice per l'intelligenza artificiale.",
-      buy_kindle:"Acquista su Kindle", buy_apple:"Acquista su Apple Books", soon:"Dal 24 novembre", soonAudio:"In arrivo",
+      buy_kindle:"Acquista su Kindle", buy_apple:"Acquista su Apple Books", buy_audible:"Ascolta su Audible", buy_spotify:"Ascolta su Spotify", soon:"Dal 24 novembre", soonAudio:"In arrivo",
       coverAlt:"Copertina di Intelligenza Aumentata, seconda edizione", cover:"assets/cover-it.jpg", sample:"assets/sample-it.mp3",
 
 
@@ -480,7 +480,7 @@ section.block{scroll-margin-top:8px}
       copy:"Copy the prompt", copied:"Copied", copyFail:"Selected: press Cmd+C",
       au_h:"About the author",
       au_p:"Emanuele Castagno is an electronic engineer who has been programming since he was ten. For thirty years he has brought innovation into companies as a founder, a CEO and today head of an international business unit in the certification industry. He is a LinkedIn Top Voice in artificial intelligence.",
-      buy_kindle:"Buy on Kindle", buy_apple:"Buy on Apple Books", soon:"From November 24", soonAudio:"Coming soon",
+      buy_kindle:"Buy on Kindle", buy_apple:"Buy on Apple Books", buy_audible:"Listen on Audible", buy_spotify:"Listen on Spotify", soon:"From November 24", soonAudio:"Coming soon",
       coverAlt:"Cover of Augmented Intelligence, second edition", cover:"assets/cover-en.jpg", sample:"assets/sample-en.mp3",
 
 
@@ -523,7 +523,7 @@ section.block{scroll-margin-top:8px}
     var t = T[lang], h = "";
     if (tab === "ebook") h = "<div class=\"row\">" + buyBtn("kindle", t.buy_kindle, "btn-primary", t.soon) + buyBtn("apple", t.buy_apple, "btn-ghost", t.soon) + "</div><div class=\"txt\">" + (offerHTML(t) ? "<p class=\"offer\">" + offerHTML(t) + "</p>" : "") + "<p class=\"hint\">" + esc(t.hint_ebook) + "</p></div>";
     else if (tab === "print") h = "<div class=\"row\">" + buyBtn("paperback", t.paperback, "btn-primary", t.paperback + ", " + low(t.soon)) + buyBtn("hardcover", t.hardcover, "btn-ghost", t.hardcover + ", " + low(t.soon)) + "</div><p class=\"hint\">" + esc(t.hint_print) + "</p>";
-    else h = "<div class=\"row\">" + buyBtn("audiobook", t.audiobook, "btn-primary", t.audiobook + ", " + low(t.soonAudio)) + "</div><p class=\"hint\">" + esc(t.hint_audio) + "</p>";
+    else h = "<div class=\"row\">" + buyBtn("audiobook", t.buy_audible, "btn-primary", t.audiobook + ", " + low(t.soonAudio)) + buyBtn("spotify", t.buy_spotify, "btn-ghost", "Spotify") + "</div><p class=\"hint\">" + esc(t.hint_audio) + "</p>";
     $("panel").innerHTML = h;
     $("tabs").innerHTML = t.tabs.map(function(x){ return "<button type=\"button\" role=\"tab\" id=\"tab-" + x[0] + "\" data-tab=\"" + x[0] + "\" aria-selected=\"" + (x[0] === tab) + "\">" + esc(x[1]) + "</button>"; }).join("");
   }
